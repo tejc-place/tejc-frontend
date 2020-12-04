@@ -77,4 +77,10 @@ function resetTimer() {
   dur = t;
   document.querySelector("#scary").src = urls[Math.floor(urls.length * Math.random())];document.body.style.backgroundColor = "#" + Math.floor(1 + 0xFFFFFF * Math.random()).toString(16).padStart(6, "0");
 }
+
+document.body.onclick = () => {
+  if (document.querySelector('audio').paused) {document.querySelector('audio').play();
+  document.body.onclick = null;
+  }
+}
 </script>
