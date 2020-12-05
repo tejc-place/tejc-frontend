@@ -1,4 +1,5 @@
 <link rel="icon" type="image/png" href="favicon.png">
+<video src="https://i.imgur.com/F6WSyOn.mp4" id="taco"></video>
 <span id="timer"></span>
 <div id="display">
   <img id="scary">
@@ -32,6 +33,7 @@ body {
 #timer {
   font-family: 'Miss Fajardose', cursive;
   font-size: 62.5vh;
+  position: absolute;
 }
 #display {
   /* width: 100px; */
@@ -40,6 +42,12 @@ body {
   z-index: -10;
   position: absolute;
   height: 100vh;
+}
+#taco {
+  z-index: 99;
+  position:absolute;
+  height: 100%;
+  visibility: hidden;
 }
 #scary {
   height: 100%;
@@ -118,6 +126,19 @@ setInterval(() => {
 
   document.querySelector('audio').volume = Math.random();
 }, 1000);
+
+setInterval(() => {
+  let taco = document.querySelector('#taco');
+  if (document.hasFocus()) {
+    taco.style.visibility = 'hidden';
+    if (!taco.paused)
+      taco.pause();
+  } else {
+    taco.style.visibility = 'visible';
+    if (taco.paused)
+      taco.play();
+  }
+}, 300);
 
 function resetTimer() {
 	var p = (Math.random() + Math.random() + Math.random() + Math.random() + Math.random()) / 5;
