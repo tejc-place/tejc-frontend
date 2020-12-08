@@ -21,6 +21,10 @@
     if (Math.random() < .2) document.write(picks[Math.floor(Math.random() * picks.length)]);
   </script></span>
 </div>
+<div id="friend-request">
+  <img src="https://i.imgur.com/LBrgUOu.png"><br>
+  <span id="request-count">1</span>&nbsp;<span>Friend Request(s)</span>
+</div>
 <audio src="music.mp3" loop autoplay></audio>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Miss+Fajardose&display=swap');
@@ -86,6 +90,46 @@ body {
 }
 a:visited {
   color: gray;
+}
+#friend-request {
+  left: 10px;
+  top: 10px;
+  position: fixed;
+  z-index: 999;
+  color: #888888;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+}
+#friend-request > img{
+  min-width: 100px;
+  min-width: 100px;
+  margin: 10px;
+}
+
+@keyframes request-blink {
+  0% {
+    background-color: #CC0000;
+  }
+  100% {
+    background-color: darkslategray;
+  }
+}
+
+#request-count {
+  animation-name: request-blink;
+  animation-duration: 2s;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  border-radius: 50%;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  font-family: monospace;
+  justify-content: center;
+  vertical-align: text-top;
+  line-height: 24px;
+  padding: 4px;
 }
 </style>
 <script>
