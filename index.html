@@ -25,6 +25,10 @@
   <img src="https://i.imgur.com/LBrgUOu.png"><br>
   <span id="request-count">1</span>&nbsp;<span>Friend Request(s)</span>
 </div>
+<div id="qr-code">
+  <img src="https://i.imgur.com/gtzr48t.png"><br>
+  <span id="request-count">1</span>&nbsp;<span>QR Code</span>
+</div>
 <audio src="music.mp3" loop autoplay></audio>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Miss+Fajardose&display=swap');
@@ -102,6 +106,21 @@ a:visited {
   cursor: pointer;
 }
 #friend-request > img{
+  width: 7.5vw;
+  margin: 10px;
+  border-radius: 50%;
+}
+#qr-code {
+  left: 999px;
+  top: 10px;
+  position: fixed;
+  z-index: 999;
+  color: #888888;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 24px;
+  cursor: pointer;
+}
+#qr-cofe > img{
   width: 7.5vw;
   margin: 10px;
   border-radius: 50%;
