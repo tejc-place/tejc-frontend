@@ -32,7 +32,10 @@ function addName(el) {
     personEl.appendChild(pName);
     personEl.appendChild(addBtn);
     peopleEl.appendChild(personEl);
-    el.remove();
+    el.innerHTML = "-";
+    el.onclick = () => {
+        el.parentElement.remove();
+    }
 }
 
 function mix() {
