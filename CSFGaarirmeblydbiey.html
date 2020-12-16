@@ -1,0 +1,51 @@
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 16px;
+    }
+    .person-name {
+        font-size: 16px;
+    }
+    button {
+        font-size: 16px;
+    }
+</style>
+<div id="people">
+    <div class="person">
+        <input class="person-name"><button onclick="addName(this)">+</button>
+    </div>
+</div>
+<div>
+    <button onclick="mix()">mix em up</button>
+</div>
+<div id="output"></div>
+<script>
+function addName(el) {
+    let peopleEl = document.querySelector("#people");
+    let personEl = document.createElement("div");
+    let pName = document.createElement("input");
+    let addBtn = document.createElement("button");
+    pName.classList.add("person-name");
+    addBtn.onclick = el.onclick;
+    addBtn.innerHTML = "+";
+    personEl.classList.add("person");
+    personEl.appendChild(pName);
+    personEl.appendChild(addBtn);
+    peopleEl.appendChild(personEl);
+    el.remove();
+}
+
+function mix() {
+    let names = [];
+    document.querySelectorAll(".person-name").forEach(e => names.push(e.value));
+    let combined = "";
+    let maxLength = -1;
+    names.forEach(v => maxLength = v.length > maxLength ? v.length : maxLength);
+    for (let i = 0; i < maxLength; i++) {
+        names.forEach(name => {
+            combined += name.charAt(i);
+        });
+    }
+    document.querySelector("#output").innerHTML = combined;
+}
+</script>
