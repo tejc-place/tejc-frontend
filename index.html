@@ -28,7 +28,8 @@
   <img src="https://i.imgur.com/LBrgUOu.png"><br>
   <span id="request-count">1</span>&nbsp;<span>Friend Request(s)</span>
 </div>
-<audio src="music.mp3" loop autoplay></audio>
+<audio src="music.mp3" id="music" loop autoplay></audio>
+<audio src="scream.mp3" id="scream" loop></audio>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Miss+Fajardose&display=swap');
 @keyframes bluetooth {
@@ -217,7 +218,7 @@ setInterval(() => {
 }, 900);
 setInterval(() => {
 
-  document.querySelector('audio').volume = Math.random();
+  document.querySelector('audio#music').volume = Math.random();
 }, 1000);
 
 setInterval(() => {
@@ -241,8 +242,21 @@ function resetTimer() {
 }
 
 document.body.onclick = () => {
-  if (document.querySelector('audio').paused) {document.querySelector('audio').play();
+  if (document.querySelector('audio#music').paused) {document.querySelector('audio#music').play();
   document.body.onclick = null;
+  }
+}
+var keysPressed = "";
+document.onkeyup = e => {
+  if (e.key === "-" || e.key === "0" || e.key.toUpperCase() === "O") {
+    keysPressed += e.key;
+    if (keysPressed === "O-O" || keysPressed === "0-0") {
+      document.querySelector("audio#scream").play();
+      keysPressed = "";
+      document.onkeyup = null;
+    }
+  } else {
+    keysPressed = "";
   }
 }
 if (Math.random() < .01) {
