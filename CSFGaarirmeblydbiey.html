@@ -9,6 +9,13 @@
     button {
         font-size: 16px;
     }
+    .banner {
+        position: fixed;
+        right: 10px;
+        top: 10px;
+        max-width: 66vw;
+        z-index: 99;
+    }
 </style>
 <div id="people">
     <div class="person">
@@ -19,6 +26,7 @@
     <button onclick="mix()">mix em up</button>
 </div>
 <div id="output"></div>
+<img class="banner" src="https://i.imgur.com/IvUmvQe.gif">
 <script>
 function addName(el) {
     let peopleEl = document.querySelector("#people");
