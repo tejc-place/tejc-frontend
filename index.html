@@ -249,7 +249,7 @@ document.body.onclick = () => {
 var keysPressed = "";
 document.onkeyup = e => {
   if (e.key === "-" || e.key === "0" || e.key.toUpperCase() === "O") {
-    keysPressed += e.key;
+    keysPressed += e.key.toUpperCase();
     if (keysPressed === "O-O" || keysPressed === "0-0") {
       document.querySelector("audio#scream").play();
       keysPressed = "";
