@@ -2,6 +2,9 @@
     body {
         font-family: Arial, Helvetica, sans-serif;
         font-size: 16px;
+        overflow: hidden;
+        width: 100vw;
+        height: 100vh;
     }
     .person-name {
         font-size: 16px;
@@ -16,7 +19,14 @@
         max-width: 66vw;
         z-index: 99;
     }
+    #taco {
+    z-index: 99;
+    position:absolute;
+    height: 100%;
+    visibility: hidden;
+    }
 </style>
+<video src="https://i.imgur.com/iwPC4Pp.mp4" id="taco"></video>
 <div id="people">
     <div class="person">
         <input class="person-name"><button onclick="addName(this)">+</button>
@@ -59,4 +69,17 @@ function mix() {
     }
     document.querySelector("#output").innerHTML = combined;
 }
+
+setInterval(() => {
+  let taco = document.querySelector('#taco');
+  if (document.hasFocus()) {
+    taco.style.visibility = 'hidden';
+    if (!taco.paused)
+      taco.pause();
+  } else {
+    taco.style.visibility = 'visible';
+    if (taco.paused)
+      taco.play();
+  }
+}, 300);
 </script>
