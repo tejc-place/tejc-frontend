@@ -1,0 +1,61 @@
+<audio class="geiger" src="hl/geiger1.mp3" autoplay loop preload="metadata"></audio>
+<audio class="geiger" src="hl/geiger2.mp3" autoplay loop preload="metadata"></audio>
+<audio class="geiger" src="hl/geiger3.mp3" autoplay loop preload="metadata"></audio>
+<audio class="damage" src="hl/dmg1.mp3"></audio>
+<audio class="damage" src="hl/dmg2.mp3"></audio>
+<audio class="damage" src="hl/dmg3.mp3"></audio>
+<audio class="vort" src="hl/vort1.mp3"></audio>
+<audio class="vort" src="hl/vort2.mp3"></audio>
+<audio class="vort" src="hl/vort3.mp3"></audio>
+<audio class="vort" src="hl/vort4.mp3"></audio>
+<audio class="vort" src="hl/vort5.mp3"></audio>
+<audio class="vort" src="hl/vort6.mp3"></audio>
+<script>
+    const dmgSounds = document.querySelectorAll("audio.damage");
+    const vortSounds = document.querySelectorAll("audio.vort");
+    document.querySelectorAll("audio.geiger").forEach(e => {
+            e.onloadedmetadata = () => {
+                let a = Math.random() * e.duration;
+                console.log(a);
+                e.currentTime = a;
+                e.volume = Math.random();
+            };
+    });
+    function radiate(play) {
+        document.querySelectorAll("audio.geiger").forEach(e => {
+                let a = Math.random() * e.duration;
+                console.log(a);
+                e.currentTime = a;
+                e.volume = .25 + .5 * Math.random();
+            if (play) e.play();
+        });
+    }
+    let hasBeenClicked = false;
+    document.onclick = function () {
+        if (!hasBeenClicked) {
+            radiate(true);
+            setInterval(radiate, 500);
+            hasBeenClicked = true;
+        } else {
+            let snd = dmgSounds[Math.floor(Math.random() * dmgSounds.length)];
+            snd.currentTime = 0;
+            snd.play();
+        }
+    }
+    setInterval(() => {
+        if (!document.hasFocus()) {
+            let snd = vortSounds[Math.floor(Math.random() * vortSounds.length)];
+            snd.currentTime = 0;
+            snd.play();
+        }
+    }, 1000);
+</script>
+<style>
+    body {
+        width: 100vw;
+        height: 100vh;
+        background: url(https://i.imgur.com/35OdJqA.png);
+        background-repeat: round;
+        cursor: none;
+    }
+</style>
