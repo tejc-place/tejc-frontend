@@ -1,9 +1,10 @@
 <link rel="icon" type="image/png" href="favicon.png">
+<title>TEJC</title>
 <div id="cool-stuff">
   <video src="https://i.imgur.com/F6WSyOn.mp4" id="taco"></video>
   <span id="timer"></span>
   <div id="display">
-    <img id="scary">
+    <img id="scary" alt="">
   </div>
 </div>
 <div id="info-corner">
@@ -26,11 +27,11 @@
 </div>
 <div id="GABW">
   <a href="GABWolaaryrldxnloeanyce.html" target="_blank">
-    <img src="health.gif">
+    <img src="health.gif" alt="Health: 666">
   </a>
 </div>
 <div id="friend-request">
-  <img src="https://i.imgur.com/LBrgUOu.png"><br>
+  <img src="https://i.imgur.com/LBrgUOu.png" alt="Portrait of TEJCalahhesiaaodnnniior"><br>
   <span id="request-count"><script>
   let ct = parseInt(localStorage.getItem("friendCount") || 1);
   document.write(ct);
@@ -102,6 +103,7 @@ body {
   color: white;
   font-size: larger;
   text-align: center;
+  padding: 10px;
 }
 #CSFG {
   z-index: 999;
@@ -123,14 +125,18 @@ body {
   background-color: transparent;
 }
 a:visited {
-  color: gray;
+  color: lightgray;
+}
+a {
+  color: powderblue;
+  padding: 20px;
 }
 #friend-request {
   left: 10px;
   top: 10px;
   position: fixed;
   z-index: 999;
-  color: #888888;
+  color: lightgray;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 24px;
   cursor: pointer;
