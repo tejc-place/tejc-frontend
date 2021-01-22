@@ -242,22 +242,33 @@ a {
      'https://i.imgur.com/UlD6rAJ.gif',
      ];
 var dur = 1;
+var toHHMMSS = function (sec_num) {
+    // var sec_num = parseInt(sec, 10); // don't forget the second param
+    var hours   = Math.floor(sec_num / 3600);
+    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+    var seconds = sec_num - (hours * 3600) - (minutes * 60);
+
+    if (hours   < 10) {hours   = "0"+hours;}
+    if (minutes < 10) {minutes = "0"+minutes;}
+    if (seconds < 10) {seconds = "0"+seconds;}
+    return ( hours > 0 ? (hours+':') : "")+(minutes > 0 ? (minutes+':') : "")+seconds;
+}
 resetTimer();
 	document.querySelector('#timer').innerHTML = dur.toString();
-  let min = Math.floor(dur / 60);
-  let sec = min > 0 ? (dur % 60) : dur;
-	document.querySelector('#timer').innerHTML = ((min > 0) ? (min.toString() + ":") : "") + sec.toString().padStart(2, "0");
+  // let hours = Math.floor(dur / 3600);
+  // let min = Math.floor((dur % 3600) / 60);
+  // let sec = dur % 60  ;
+  // let date = new Date(0);
+  // date.setSeconds(dur);
+  // let timeString = date.toISOString().substr(11, 8);
+	// document.querySelector('#timer').innerHTML = ((min > 0) ? (min.toString() + ":") : "") + sec.toString().padStart(2, "0");
+	document.querySelector('#timer').innerHTML = toHHMMSS(dur);
     
 setInterval(() => {
 	if (dur <= 0) {
   	resetTimer();
-    /* setTimeout(() => {
-      document.querySelector("#scary").src = "";
-    }, 1000 + Math.random() * 2000); */
   }
-  let min = Math.floor(dur / 60);
-  let sec = min > 0 ? (dur % 60) : dur;
-	document.querySelector('#timer').innerHTML = ((min > 0) ? (min.toString() + ":") : "") + sec.toString().padStart(2, "0");
+	document.querySelector('#timer').innerHTML = toHHMMSS(dur);
   dur -= 1;
 }, 900);
 setInterval(() => {
@@ -280,7 +291,7 @@ setInterval(() => {
 
 function resetTimer() {
 	var p = (Math.random() + Math.random() + Math.random() + Math.random() + Math.random()) / 5;
-  let t = 30 + Math.floor(210 * Math.abs(p - .5));
+  let t = 30 + Math.floor((210 + ct) * Math.abs(p - .5));
   dur = t;
   document.querySelector("#scary").src = urls[Math.floor(urls.length * Math.random())];document.body.style.backgroundColor = "#" + Math.floor(1 + 0xFFFFFF * Math.random()).toString(16).padStart(6, "0");
 }
