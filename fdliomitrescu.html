@@ -1,0 +1,41 @@
+<style>
+    @keyframes bg-blink {
+        0% {
+            background-color: black;
+            transform: rotate(1.5deg);
+            width: 100vw;
+            height: 100vh;
+        }
+        100% {
+            background-color: white;
+            transform: rotate(-1.5deg);
+            width: 200vw;
+            height: 200vh;
+        }
+    }
+
+    body {
+        animation-name: bg-blink;
+        animation-duration: 0.35s;
+        animation-direction: alternate;
+        animation-iteration-count: infinite;
+        border-radius: 50%;
+        display: inline-block;
+        width: 100vw;
+        height: 100vh;
+        text-align: center;
+        font-family: monospace;
+        justify-content: center;
+        vertical-align: text-top;
+        line-height: 24px;
+        padding: 50px;
+        background-image: url(https://i.imgur.com/JVi0MQ7.gif);
+        background-repeat: space;
+    }
+</style>
+<blockquote class="twitter-tweet"><p lang="und" dir="ltr"><a href="https://t.co/JYG5f27aBg">pic.twitter.com/JYG5f27aBg</a></p>&mdash; Oghma (@Oghmarion) <a href="https://twitter.com/Oghmarion/status/1361556769433149440?ref_src=twsrc%5Etfw">February 16, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<script>
+    document.body.onclick = (() => {
+        window.location.replace("https://twitter.com/Oghmarion/status/1361556769433149440");
+    });
+</script>
