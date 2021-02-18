@@ -58,6 +58,9 @@
   }
   </script></span>&nbsp;<span>Friend Request(s)</span>
 </div>
+<div id="dsi" ondragover="event.preventDefault()">
+  <h1>⅔ the way to the end of time!</h1>
+</div>
 <audio src="music.mp3" id="music" loop autoplay></audio>
 <audio src="scream.mp3" id="scream" loop></audio>
 <style>
@@ -117,6 +120,16 @@ body {
   position: fixed;
   right: 10px;
   bottom: 10px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: black;
+  color: white;
+  font-size: larger;
+  text-align: center;
+  padding: 10px;
+}
+#dsi {
+  z-index: 99;
+  position: fixed;
   font-family: Arial, Helvetica, sans-serif;
   background-color: black;
   color: white;
@@ -253,7 +266,7 @@ var toHHMMSS = function (sec_num) {
     return ( hours > 0 ? (hours+':') : "")+(minutes > 0 ? (minutes+':') : "")+seconds;
 }
 resetTimer();
-	document.querySelector('#timer').innerHTML = dur.toString();
+  document.querySelector('#timer').innerHTML = dur.toString();
   // let hours = Math.floor(dur / 3600);
   // let min = Math.floor((dur % 3600) / 60);
   // let sec = dur % 60  ;
@@ -321,6 +334,17 @@ if (Math.random() < .01) {
     if (i % Math.floor(2 + Math.random() * 5) == 0) {
       document.write("<br>");
     }
+  }
+}
+document.querySelector("#GABW").ondragstart = e => {
+  e.dataTransfer.setData("text/plain", "gotofd");
+}
+let dsi = document.querySelector("#dsi");
+dsi.style.left = Math.floor(Math.random() * window.innerWidth - 100).toString() + "px";
+dsi.style.top = Math.floor(Math.random() * window.innerHeight - 100).toString() + "px";
+dsi.ondrop = e => {
+  if (e.dataTransfer.getData("text/plain") === "gotofd") {
+    window.location.href = "fdliomitrescu.html";
   }
 }
 </script>
