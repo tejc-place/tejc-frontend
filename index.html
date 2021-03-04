@@ -53,6 +53,7 @@
       let s = 0;
       ctx.fillStyle = "#FF0000";
       let algos = [];
+      let cRand = Math.random();
       algos.push((x, t, s) => {
         return Math.sin(t / 10) * (h / 2) + baseline;
       });
@@ -62,6 +63,20 @@
       algos.push((x, t, s) => {
         return (Math.tan(t / 10) * (x / w)) * (h / 2) + baseline;
       });
+      algos.push((x, t, s) => {
+        return (2 * Math.random() - 1) * (h / 2) + baseline;
+      });
+      algos.push((x, t, s) => {
+        return (2 * Math.tanh((t % (cRand * w)) / (cRand * w)) - 1) * (h / 2) + baseline;
+      });
+      algos.push((x, t, s) => {
+        return Math.sin(t * cRand) * Math.cos(t * cRand * cRand) * (h / 2) + baseline;
+      });
+      if (Math.random() < .1) {
+        algos.push((x, t, s) => {
+            return (2 * x / (w - 15 * Math.floor(t / w)) - 1) * (h / 2) + baseline;
+        });
+      }
       let algo = algos[Math.floor(Math.random() * algos.length)];
       setInterval(() => {
         let x = t % w;
