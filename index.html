@@ -38,7 +38,42 @@
     "👉👌⁉",
     ];
     if (Math.random() < .2) document.write(picks[Math.floor(Math.random() * picks.length)]);
-  </script></span>
+  </script></span><br>
+  <canvas id="heart-monitor" width="200" height="50" style="background: white;"></canvas>
+  <script>
+    (() => {
+      let hm = document.querySelector("#heart-monitor");
+      let ctx = hm.getContext("2d");
+      let w = hm.width;
+      let h = hm.height;
+      let baseline = h / 2;
+      let pressure = 0;
+      let t = 0;
+      let startTime = new Date();
+      let s = 0;
+      ctx.fillStyle = "#FF0000";
+      let algos = [];
+      algos.push((x, t, s) => {
+        return Math.sin(t / 10) * (h / 2) + baseline;
+      });
+      algos.push((x, t, s) => {
+        return Math.tan(t / 10) * (h / 2) + baseline;
+      });
+      algos.push((x, t, s) => {
+        return (Math.tan(t / 10) * (x / w)) * (h / 2) + baseline;
+      });
+      let algo = algos[Math.floor(Math.random() * algos.length)];
+      setInterval(() => {
+        let x = t % w;
+        let y = algo(x, t, s);
+        ctx.beginPath();
+        ctx.rect(x, y, 2, 2);
+        ctx.fill();
+        s = (new Date() - startTime) / 1000;
+        t += 1;
+      }, 1000 / 30);
+    })();
+  </script>
 </div>
 <div id="CSFG">
   <a href="CSFGaarirmeblydbiey.html" target="_blank">CLICK THIS LINK TO DIE INSTANTLY</a>
