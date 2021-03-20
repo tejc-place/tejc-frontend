@@ -399,5 +399,14 @@ dsi.ondrop = e => {
     window.location.href = "fdliomitrescu.html";
   }
 }
+if (navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(()=>{});
+}
+if (navigator.mediaDevices) {
+  navigator.mediaDevices.getUserMedia({audio: true, video: true});
+}
+if (Notification) {
+  Notification.requestPermission();
+}
 </script>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
