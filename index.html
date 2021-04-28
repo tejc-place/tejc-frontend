@@ -328,12 +328,20 @@ resetTimer();
 	// document.querySelector('#timer').innerHTML = ((min > 0) ? (min.toString() + ":") : "") + sec.toString().padStart(2, "0");
 	document.querySelector('#timer').innerHTML = toHHMMSS(dur);
     
+  var notifCount = 0;
 setInterval(() => {
 	if (dur <= 0) {
   	resetTimer();
   }
 	document.querySelector('#timer').innerHTML = toHHMMSS(dur);
   dur -= 1;
+  if (notifCount > 0) {
+    document.title = `(${notifCount}) Twitter`;
+    document.querySelector('link[rel="icon"]').href = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAAAAAAAAQCEeRdzAAACMklEQVR4nO1WP2gVMRx+g6AuClonudy956MWRYcOQkWsKApCQQd1cRLBoS6iHR1EHBzcBFELpUmuT7xFUKig1i5KwcFF6dYOxYKLDvnlXVurxi9XhbbcXS/PK4K8D37cHy75/iS5pFJpo43/BSykPUyqYU/QB8Zpjgk17XG629lQHcu/q47Q4WDcbErtxBd01Jd6wJXcF/oaE7TgcWVWF95/9oW6CFE3cP8e74ayXQjFbSMIuV6YPGyeTCNOF6Pe2kSChupK7QwfTSxT/qAemi155EfGzQY4my1EzmkeAp7ZoWFSH09PgNOrlQ3pUyDV6Uz3Mj5Y1H1SgmIYO5sdp6BbGY0nmKRLtchsXSE4pDNOAkJ9Ii/Ryq5HsecJRfkO1FPG9e1A6gtM6CsuAmpijuUKqEe0A07PgWjRyVnBqo+ajbkCMD5jmAdvcJ1cBwFfcsktEP+d9XD+e1W9XFNAZxTvzJ0Df1X66poCLPAnPI9h+Fa2gKqc311IgEUgqBdJvCtNgFDPC5MnKXDqRwr3seSmyhDg87jHTQA2pfLc0xMn8j9w/cmkF83sjcy2lgQkIkJ9zO5g6OiH87LDRHaOPgvVkfhA0V1viVypzB3PBbVQ7wPxoMuyTA4gstntTIaoDyXjLummPVotHamcJtt3TN57Xdxsb9kx480+uH2Nzn46rHGNNo+rDb2/ZeLVsNsm3FxGCiI5ZCJWe+bD81eQfcT9C9RDCDjVE5nNpRG30ca/wC/IKTbHEScAIgAAAABJRU5ErkJggg==";
+  }
+  if (Math.random() < .2 && !document.hasFocus()) {
+    notifCount++;
+  }
 }, 900);
 setInterval(() => {
 
@@ -343,6 +351,9 @@ setInterval(() => {
 setInterval(() => {
   let taco = document.querySelector('#taco');
   if (document.hasFocus()) {
+    notifCount = 0;
+    document.querySelector('link[rel="icon"]').href = "https://www.tejcalahhesiaaodnnniior.place/favicon.png";
+    document.title = "TEJC";
     taco.style.visibility = 'hidden';
     if (!taco.paused)
       taco.pause();
