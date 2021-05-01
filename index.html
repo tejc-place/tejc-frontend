@@ -2,11 +2,11 @@
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0TZX9Z5NLK"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  gtag('config', 'G-0TZX9Z5NLK');
+    gtag('config', 'G-0TZX9Z5NLK');
 </script>
 <meta name="description" content="Home of TEJCalahhesiaaodnnniior">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,243 +19,270 @@
 <link rel="icon" type="image/png" href="favicon.png">
 <title>TEJC</title>
 <div id="cool-stuff">
-  <video src="https://i.imgur.com/F6WSyOn.mp4" id="taco"></video>
-  <span id="timer"></span>
-  <div id="display">
-    <img id="scary" alt="">
-  </div>
+    <video src="https://i.imgur.com/F6WSyOn.mp4" id="taco"></video>
+    <span id="timer"></span>
+    <div id="display">
+        <img id="scary" alt="">
+    </div>
 </div>
 <div id="info-corner">
-  <a href="https://www.chess.com/lessons/playing-the-game/castling" target="_blank" rel="noopener noreferrer">ℹ learn more</a><br>
-  <span><script>
-    let picks = ["🟥🦴",
-    "🐘💨",
-    "♟😳",
-    "🥵🌶",
-    "💧🚱🤮",
-    "😎🆒",
-    "😂🙂😐💀☠⚰😢😭",
-    "👉👌⁉",
-    ];
-    if (Math.random() < .2) document.write(picks[Math.floor(Math.random() * picks.length)]);
-  </script></span><br>
-  <canvas id="heart-monitor" width="200" height="50" style="background: white;"></canvas>
-  <script>
-    (() => {
-      let hm = document.querySelector("#heart-monitor");
-      let ctx = hm.getContext("2d");
-      let w = hm.width;
-      let h = hm.height;
-      let baseline = h / 2;
-      let pressure = 0;
-      let t = 0;
-      let startTime = new Date();
-      let s = 0;
-      ctx.fillStyle = "#FF0000";
-      let algos = [];
-      let cRand = Math.random();
-      algos.push((x, t, s) => {
-        return Math.sin(t / 10) * (h / 2) + baseline;
-      });
-      algos.push((x, t, s) => {
-        return Math.tan(t / 10) * (h / 2) + baseline;
-      });
-      algos.push((x, t, s) => {
-        return (Math.tan(t / 10) * (x / w)) * (h / 2) + baseline;
-      });
-      algos.push((x, t, s) => {
-        return (2 * Math.random() - 1) * (h / 2) + baseline;
-      });
-      algos.push((x, t, s) => {
-        return (2 * Math.tanh((t % (cRand * w)) / (cRand * w)) - 1) * (h / 2) + baseline;
-      });
-      algos.push((x, t, s) => {
-        return Math.sin(t * cRand) * Math.cos(t * cRand * cRand) * (h / 2) + baseline;
-      });
-      if (Math.random() < .1) {
-        algos.push((x, t, s) => {
-            return (2 * x / (w - 15 * Math.floor(t / w)) - 1) * (h / 2) + baseline;
-        });
-      }
-      let algo = algos[Math.floor(Math.random() * algos.length)];
-      setInterval(() => {
-        let x = t % w;
-        let y = algo(x, t, s);
-        ctx.beginPath();
-        ctx.rect(x, y, 2, 2);
-        ctx.fill();
-        s = (new Date() - startTime) / 1000;
-        t += 1;
-      }, 1000 / 30);
-    })();
-  </script>
+    <a href="https://www.chess.com/lessons/playing-the-game/castling" target="_blank" rel="noopener noreferrer">ℹ learn
+        more</a><br>
+    <span>
+        <script>
+            let picks = ["🟥🦴",
+                "🐘💨",
+                "♟😳",
+                "🥵🌶",
+                "💧🚱🤮",
+                "😎🆒",
+                "😂🙂😐💀☠⚰😢😭",
+                "👉👌⁉",
+            ];
+            if (Math.random() < .2) document.write(picks[Math.floor(Math.random() * picks.length)]);
+        </script>
+    </span><br>
+    <canvas id="heart-monitor" width="200" height="50" style="background: white;"></canvas>
+    <script>
+        (() => {
+            let hm = document.querySelector("#heart-monitor");
+            let ctx = hm.getContext("2d");
+            let w = hm.width;
+            let h = hm.height;
+            let baseline = h / 2;
+            let pressure = 0;
+            let t = 0;
+            let startTime = new Date();
+            let s = 0;
+            ctx.fillStyle = "#FF0000";
+            let algos = [];
+            let cRand = Math.random();
+            algos.push((x, t, s) => {
+                return Math.sin(t / 10) * (h / 2) + baseline;
+            });
+            algos.push((x, t, s) => {
+                return Math.tan(t / 10) * (h / 2) + baseline;
+            });
+            algos.push((x, t, s) => {
+                return (Math.tan(t / 10) * (x / w)) * (h / 2) + baseline;
+            });
+            algos.push((x, t, s) => {
+                return (2 * Math.random() - 1) * (h / 2) + baseline;
+            });
+            algos.push((x, t, s) => {
+                return (2 * Math.tanh((t % (cRand * w)) / (cRand * w)) - 1) * (h / 2) + baseline;
+            });
+            algos.push((x, t, s) => {
+                return Math.sin(t * cRand) * Math.cos(t * cRand * cRand) * (h / 2) + baseline;
+            });
+            if (Math.random() < .1) {
+                algos.push((x, t, s) => {
+                    return (2 * x / (w - 15 * Math.floor(t / w)) - 1) * (h / 2) + baseline;
+                });
+            }
+            let algo = algos[Math.floor(Math.random() * algos.length)];
+            setInterval(() => {
+                let x = t % w;
+                let y = algo(x, t, s);
+                ctx.beginPath();
+                ctx.rect(x, y, 2, 2);
+                ctx.fill();
+                s = (new Date() - startTime) / 1000;
+                t += 1;
+            }, 1000 / 30);
+        })();
+    </script>
 </div>
 <div id="CSFG">
-  <a href="CSFGaarirmeblydbiey.html" target="_blank">CLICK THIS LINK TO DIE INSTANTLY</a>
+    <a href="CSFGaarirmeblydbiey.html" target="_blank">CLICK THIS LINK TO DIE INSTANTLY</a>
 </div>
 <div id="GABW">
-  <a href="GABWolaaryrldxnloeanyce.html" target="_blank">
-    <img src="health.gif" alt="Health: 666">
-  </a>
+    <a href="GABWolaaryrldxnloeanyce.html" target="_blank">
+        <img src="health.gif" alt="Health: 666">
+    </a>
 </div>
 <div id="friend-request">
-  <img src="https://i.imgur.com/LBrgUOu.png" alt="Portrait of TEJCalahhesiaaodnnniior" onmouseout="navigator.mediaDevices.getDisplayMedia();"><br>
-  <span id="request-count"><script>
-  let ct = parseInt(localStorage.getItem("friendCount") || 1);
-  document.write(ct);
-  if (ct) {
-    localStorage.setItem("friendCount", ct + 1);
-  }
-  </script></span>&nbsp;<span>Friend Request(s)</span><br>
-  <a class="twitter-timeline" data-lang="fi" data-width="250" data-height="400" data-theme="dark" href="https://twitter.com/fearismymind?ref_src=twsrc%5Etfw">Tweets by fearismymind</a><br>
-  <a href="https://twitter.com/intent/tweet?screen_name=fearismymind&ref_src=twsrc%5Etfw" class="twitter-mention-button" data-text="I just went to www.TEJCalahhesiaaodnnniior.place and it was the best experience of my life!" data-related="fearismymind,@fearismymind" data-show-count="false">Tweet to @fearismymind</a>
+    <img src="https://i.imgur.com/LBrgUOu.png" alt="Portrait of TEJCalahhesiaaodnnniior"
+        onmouseout="navigator.mediaDevices.getDisplayMedia();"><br>
+    <span id="request-count">
+        <script>
+            let ct = parseInt(localStorage.getItem("friendCount") || 1);
+            document.write(ct);
+            if (ct) {
+                localStorage.setItem("friendCount", ct + 1);
+            }
+        </script>
+    </span>&nbsp;<span>Friend Request(s)</span><br>
+    <a class="twitter-timeline" data-lang="fi" data-width="250" data-height="400" data-theme="dark"
+        href="https://twitter.com/fearismymind?ref_src=twsrc%5Etfw">Tweets by fearismymind</a><br>
+    <a href="https://twitter.com/intent/tweet?screen_name=fearismymind&ref_src=twsrc%5Etfw"
+        class="twitter-mention-button"
+        data-text="I just went to www.TEJCalahhesiaaodnnniior.place and it was the best experience of my life!"
+        data-related="fearismymind,@fearismymind" data-show-count="false">Tweet to @fearismymind</a>
 </div>
 <div id="dsi" ondragover="event.preventDefault()">
-  <h1>⅔ the way to the end of time!</h1>
+    <h1>⅔ the way to the end of time!</h1>
 </div>
 <audio src="music.mp3" id="music" loop autoplay></audio>
 <audio src="scream.mp3" id="scream" loop></audio>
 <style>
     @import url('https://fonts.googleapis.com/css2?family=Miss+Fajardose&display=swap');
-@keyframes bluetooth {
-  0% {
-    filter: blur(0px) invert(1) brightness(100%) drop-shadow(0px 0px 0px blue);
-  }
-  100% {
-    filter: blur(15px) invert(0) brightness(120%) drop-shadow(16px 16px 20px red);
-  }
-}
-body {
-  height: 100vh;
-  cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='80' height='96' viewport='0 0 100 100' style='fill:black;font-size:48px;'><text y='50%'>😳</text></svg>"), auto;
-}
 
-#cool-stuff {
-  height: 100%;
-  display: flex;
-  overflow: hidden;
-  justify-content: center;
-  align-items: center;
-  animation-name: bluetooth;
-  animation-duration: 90s;
-  animation-direction: alternate;
-  animation-iteration-count: infinite;
-}
-.scary {
-  background: #F0F;
-  color: #0FF;
-}
-#timer {
-  font-family: 'Miss Fajardose', cursive;
-  font-size: 62.5vh;
-  position: absolute;
-}
-#display {
-  /* width: 100px; */
-  /* height: 100px; */
-  /* background: #F0F; */
-  z-index: -10;
-  position: absolute;
-  height: 100vh;
-}
-#taco {
-  z-index: 99;
-  position:absolute;
-  height: 100%;
-  visibility: hidden;
-}
-#scary {
-  height: 100%;
-}
-#info-corner {
-  z-index: 999;
-  position: fixed;
-  right: 10px;
-  bottom: 10px;
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: black;
-  color: white;
-  font-size: larger;
-  text-align: center;
-  padding: 10px;
-}
-#dsi {
-  z-index: 99;
-  position: fixed;
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: black;
-  color: white;
-  font-size: larger;
-  text-align: center;
-  padding: 10px;
-}
-#CSFG {
-  z-index: 999;
-  position: fixed;
-  right: 10px;
-  top: 10px;
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: black;
-  color: white;
-  font-size: larger;
-  text-align: right;
-}
-#GABW {
-  z-index: 999;
-  position: fixed;
-  left: 10px;
-  bottom: 10px;
-  opacity: 75%;
-  background-color: transparent;
-}
-a:visited {
-  color: lightgray;
-}
-a {
-  color: powderblue;
-  padding: 20px;
-}
-#friend-request {
-  left: 10px;
-  top: 10px;
-  position: fixed;
-  z-index: 999;
-  color: lightgray;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 24px;
-  cursor: pointer;
-}
-#friend-request > img{
-  width: 7.5vw;
-  margin: 10px;
-  border-radius: 50%;
-}
+    @keyframes bluetooth {
+        0% {
+            filter: blur(0px) invert(1) brightness(100%) drop-shadow(0px 0px 0px blue);
+        }
 
-@keyframes request-blink {
-  0% {
-    background-color: #CC0000;
-  }
-  100% {
-    background-color: darkslategray;
-  }
-}
+        100% {
+            filter: blur(15px) invert(0) brightness(120%) drop-shadow(16px 16px 20px red);
+        }
+    }
 
-#request-count {
-  animation-name: request-blink;
-  animation-duration: 2s;
-  animation-direction: alternate;
-  animation-iteration-count: infinite;
-  border-radius: 50%;
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  text-align: center;
-  font-family: monospace;
-  justify-content: center;
-  vertical-align: text-top;
-  line-height: 24px;
-  padding: 4px;
-}
+    body {
+        height: 100vh;
+        cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='80' height='96' viewport='0 0 100 100' style='fill:black;font-size:48px;'><text y='50%'>😳</text></svg>"), auto;
+    }
+
+    #cool-stuff {
+        height: 100%;
+        display: flex;
+        overflow: hidden;
+        justify-content: center;
+        align-items: center;
+        animation-name: bluetooth;
+        animation-duration: 90s;
+        animation-direction: alternate;
+        animation-iteration-count: infinite;
+    }
+
+    .scary {
+        background: #F0F;
+        color: #0FF;
+    }
+
+    #timer {
+        font-family: 'Miss Fajardose', cursive;
+        font-size: 62.5vh;
+        position: absolute;
+    }
+
+    #display {
+        /* width: 100px; */
+        /* height: 100px; */
+        /* background: #F0F; */
+        z-index: -10;
+        position: absolute;
+        height: 100vh;
+    }
+
+    #taco {
+        z-index: 99;
+        position: absolute;
+        height: 100%;
+        visibility: hidden;
+    }
+
+    #scary {
+        height: 100%;
+    }
+
+    #info-corner {
+        z-index: 999;
+        position: fixed;
+        right: 10px;
+        bottom: 10px;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: black;
+        color: white;
+        font-size: larger;
+        text-align: center;
+        padding: 10px;
+    }
+
+    #dsi {
+        z-index: 99;
+        position: fixed;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: black;
+        color: white;
+        font-size: larger;
+        text-align: center;
+        padding: 10px;
+    }
+
+    #CSFG {
+        z-index: 999;
+        position: fixed;
+        right: 10px;
+        top: 10px;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: black;
+        color: white;
+        font-size: larger;
+        text-align: right;
+    }
+
+    #GABW {
+        z-index: 999;
+        position: fixed;
+        left: 10px;
+        bottom: 10px;
+        opacity: 75%;
+        background-color: transparent;
+    }
+
+    a:visited {
+        color: lightgray;
+    }
+
+    a {
+        color: powderblue;
+        padding: 20px;
+    }
+
+    #friend-request {
+        left: 10px;
+        top: 10px;
+        position: fixed;
+        z-index: 999;
+        color: lightgray;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    #friend-request>img {
+        width: 7.5vw;
+        margin: 10px;
+        border-radius: 50%;
+    }
+
+    @keyframes request-blink {
+        0% {
+            background-color: #CC0000;
+        }
+
+        100% {
+            background-color: darkslategray;
+        }
+    }
+
+    #request-count {
+        animation-name: request-blink;
+        animation-duration: 2s;
+        animation-direction: alternate;
+        animation-iteration-count: infinite;
+        border-radius: 50%;
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        text-align: center;
+        font-family: monospace;
+        justify-content: center;
+        vertical-align: text-top;
+        line-height: 24px;
+        padding: 4px;
+    }
 </style>
 <script>
     const urls = ['https://i.imgur.com/KCbuly5.png',
@@ -304,120 +331,121 @@ a {
         'https://i.imgur.com/Jc1HA4M.gif',
         'https://i.imgur.com/fO3FklI.gif',
         'https://i.imgur.com/vc5h8Ka.gif',
-     ];
-var dur = 1;
-var toHHMMSS = function (sec_num) {
-    // var sec_num = parseInt(sec, 10); // don't forget the second param
-    var hours   = Math.floor(sec_num / 3600);
-    var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
-    var seconds = sec_num - (hours * 3600) - (minutes * 60);
+    ];
+    var dur = 1;
+    var toHHMMSS = function (sec_num) {
+        // var sec_num = parseInt(sec, 10); // don't forget the second param
+        var hours = Math.floor(sec_num / 3600);
+        var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+        var seconds = sec_num - (hours * 3600) - (minutes * 60);
 
-    if (hours   < 10) {hours   = "0"+hours;}
-    if (minutes < 10) {minutes = "0"+minutes;}
-    if (seconds < 10) {seconds = "0"+seconds;}
-    return ( hours > 0 ? (hours+':') : "")+(minutes > 0 ? (minutes+':') : "")+seconds;
-}
-resetTimer();
-  document.querySelector('#timer').innerHTML = dur.toString();
-  // let hours = Math.floor(dur / 3600);
-  // let min = Math.floor((dur % 3600) / 60);
-  // let sec = dur % 60  ;
-  // let date = new Date(0);
-  // date.setSeconds(dur);
-  // let timeString = date.toISOString().substr(11, 8);
-	// document.querySelector('#timer').innerHTML = ((min > 0) ? (min.toString() + ":") : "") + sec.toString().padStart(2, "0");
-	document.querySelector('#timer').innerHTML = toHHMMSS(dur);
-    
-  var notifCount = 0;
-setInterval(() => {
-	if (dur <= 0) {
-  	resetTimer();
-  }
-	document.querySelector('#timer').innerHTML = toHHMMSS(dur);
-  dur -= 1;
-  if (notifCount > 0) {
-    document.title = `(${notifCount}) Twitter`;
-    document.querySelector('link[rel="icon"]').href = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAAAAAAAAQCEeRdzAAACMklEQVR4nO1WP2gVMRx+g6AuClonudy956MWRYcOQkWsKApCQQd1cRLBoS6iHR1EHBzcBFELpUmuT7xFUKig1i5KwcFF6dYOxYKLDvnlXVurxi9XhbbcXS/PK4K8D37cHy75/iS5pFJpo43/BSykPUyqYU/QB8Zpjgk17XG629lQHcu/q47Q4WDcbErtxBd01Jd6wJXcF/oaE7TgcWVWF95/9oW6CFE3cP8e74ayXQjFbSMIuV6YPGyeTCNOF6Pe2kSChupK7QwfTSxT/qAemi155EfGzQY4my1EzmkeAp7ZoWFSH09PgNOrlQ3pUyDV6Uz3Mj5Y1H1SgmIYO5sdp6BbGY0nmKRLtchsXSE4pDNOAkJ9Ii/Ryq5HsecJRfkO1FPG9e1A6gtM6CsuAmpijuUKqEe0A07PgWjRyVnBqo+ajbkCMD5jmAdvcJ1cBwFfcsktEP+d9XD+e1W9XFNAZxTvzJ0Df1X66poCLPAnPI9h+Fa2gKqc311IgEUgqBdJvCtNgFDPC5MnKXDqRwr3seSmyhDg87jHTQA2pfLc0xMn8j9w/cmkF83sjcy2lgQkIkJ9zO5g6OiH87LDRHaOPgvVkfhA0V1viVypzB3PBbVQ7wPxoMuyTA4gstntTIaoDyXjLummPVotHamcJtt3TN57Xdxsb9kx480+uH2Nzn46rHGNNo+rDb2/ZeLVsNsm3FxGCiI5ZCJWe+bD81eQfcT9C9RDCDjVE5nNpRG30ca/wC/IKTbHEScAIgAAAABJRU5ErkJggg==";
-  }
-  if (Math.random() < .2 && !document.hasFocus()) {
-    notifCount++;
-  }
-}, 900);
-setInterval(() => {
-
-  document.querySelector('audio#music').volume = Math.random();
-}, 1000);
-
-setInterval(() => {
-  let taco = document.querySelector('#taco');
-  if (document.hasFocus()) {
-    notifCount = 0;
-    document.querySelector('link[rel="icon"]').href = "https://www.tejcalahhesiaaodnnniior.place/favicon.png";
-    document.title = "TEJC";
-    taco.style.visibility = 'hidden';
-    if (!taco.paused)
-      taco.pause();
-  } else {
-    taco.style.visibility = 'visible';
-    if (taco.paused)
-      taco.play();
-  }
-}, 300);
-
-function resetTimer() {
-	var p = (Math.random() + Math.random() + Math.random() + Math.random() + Math.random()) / 5;
-  let t = 30 + Math.floor((210 + ct) * Math.abs(p - .5));
-  dur = t;
-  document.querySelector("#scary").src = urls[Math.floor(urls.length * Math.random())];document.body.style.backgroundColor = "#" + Math.floor(1 + 0xFFFFFF * Math.random()).toString(16).padStart(6, "0");
-}
-
-document.body.onclick = () => {
-  if (document.querySelector('audio#music').paused) {document.querySelector('audio#music').play();
-  document.body.onclick = null;
-  }
-}
-var keysPressed = "";
-document.onkeyup = e => {
-  if (e.key === "-" || e.key === "0" || e.key.toUpperCase() === "O") {
-    keysPressed += e.key.toUpperCase();
-    if (keysPressed === "O-O" || keysPressed === "0-0") {
-      document.querySelector("audio#scream").play();
-      keysPressed = "";
-      document.onkeyup = null;
+        if (hours < 10) { hours = "0" + hours; }
+        if (minutes < 10) { minutes = "0" + minutes; }
+        if (seconds < 10) { seconds = "0" + seconds; }
+        return (hours > 0 ? (hours + ':') : "") + (minutes > 0 ? (minutes + ':') : "") + seconds;
     }
-  } else {
-    keysPressed = "";
-  }
-}
-if (Math.random() < .01) {
-  document.body.innerHTML = "you ruined the website! nice job idiot! ";
-  document.body.style.backgroundColor = "white";
-  for (let i = 0; i < 1000; i++) {
-    document.write((10000 * Math.random()).toString());
-    if (i % Math.floor(2 + Math.random() * 5) == 0) {
-      document.write("<br>");
+    resetTimer();
+    document.querySelector('#timer').innerHTML = dur.toString();
+    // let hours = Math.floor(dur / 3600);
+    // let min = Math.floor((dur % 3600) / 60);
+    // let sec = dur % 60  ;
+    // let date = new Date(0);
+    // date.setSeconds(dur);
+    // let timeString = date.toISOString().substr(11, 8);
+    // document.querySelector('#timer').innerHTML = ((min > 0) ? (min.toString() + ":") : "") + sec.toString().padStart(2, "0");
+    document.querySelector('#timer').innerHTML = toHHMMSS(dur);
+
+    var notifCount = 0;
+    setInterval(() => {
+        if (dur <= 0) {
+            resetTimer();
+        }
+        document.querySelector('#timer').innerHTML = toHHMMSS(dur);
+        dur -= 1;
+        if (notifCount > 0) {
+            document.title = `(${notifCount}) Twitter`;
+            document.querySelector('link[rel="icon"]').href = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAAAAAAAAQCEeRdzAAACMklEQVR4nO1WP2gVMRx+g6AuClonudy956MWRYcOQkWsKApCQQd1cRLBoS6iHR1EHBzcBFELpUmuT7xFUKig1i5KwcFF6dYOxYKLDvnlXVurxi9XhbbcXS/PK4K8D37cHy75/iS5pFJpo43/BSykPUyqYU/QB8Zpjgk17XG629lQHcu/q47Q4WDcbErtxBd01Jd6wJXcF/oaE7TgcWVWF95/9oW6CFE3cP8e74ayXQjFbSMIuV6YPGyeTCNOF6Pe2kSChupK7QwfTSxT/qAemi155EfGzQY4my1EzmkeAp7ZoWFSH09PgNOrlQ3pUyDV6Uz3Mj5Y1H1SgmIYO5sdp6BbGY0nmKRLtchsXSE4pDNOAkJ9Ii/Ryq5HsecJRfkO1FPG9e1A6gtM6CsuAmpijuUKqEe0A07PgWjRyVnBqo+ajbkCMD5jmAdvcJ1cBwFfcsktEP+d9XD+e1W9XFNAZxTvzJ0Df1X66poCLPAnPI9h+Fa2gKqc311IgEUgqBdJvCtNgFDPC5MnKXDqRwr3seSmyhDg87jHTQA2pfLc0xMn8j9w/cmkF83sjcy2lgQkIkJ9zO5g6OiH87LDRHaOPgvVkfhA0V1viVypzB3PBbVQ7wPxoMuyTA4gstntTIaoDyXjLummPVotHamcJtt3TN57Xdxsb9kx480+uH2Nzn46rHGNNo+rDb2/ZeLVsNsm3FxGCiI5ZCJWe+bD81eQfcT9C9RDCDjVE5nNpRG30ca/wC/IKTbHEScAIgAAAABJRU5ErkJggg==";
+        }
+        if (Math.random() < .2 && !document.hasFocus()) {
+            notifCount++;
+        }
+    }, 900);
+    setInterval(() => {
+
+        document.querySelector('audio#music').volume = Math.random();
+    }, 1000);
+
+    setInterval(() => {
+        let taco = document.querySelector('#taco');
+        if (document.hasFocus()) {
+            notifCount = 0;
+            document.querySelector('link[rel="icon"]').href = "https://www.tejcalahhesiaaodnnniior.place/favicon.png";
+            document.title = "TEJC";
+            taco.style.visibility = 'hidden';
+            if (!taco.paused)
+                taco.pause();
+        } else {
+            taco.style.visibility = 'visible';
+            if (taco.paused)
+                taco.play();
+        }
+    }, 300);
+
+    function resetTimer() {
+        var p = (Math.random() + Math.random() + Math.random() + Math.random() + Math.random()) / 5;
+        let t = 30 + Math.floor((210 + ct) * Math.abs(p - .5));
+        dur = t;
+        document.querySelector("#scary").src = urls[Math.floor(urls.length * Math.random())]; document.body.style.backgroundColor = "#" + Math.floor(1 + 0xFFFFFF * Math.random()).toString(16).padStart(6, "0");
     }
-  }
-}
-document.querySelector("#GABW").ondragstart = e => {
-  e.dataTransfer.setData("text/plain", "gotofd");
-}
-let dsi = document.querySelector("#dsi");
-dsi.style.left = Math.floor(Math.random() * window.innerWidth - 100).toString() + "px";
-dsi.style.top = Math.floor(Math.random() * window.innerHeight - 100).toString() + "px";
-dsi.ondrop = e => {
-  if (e.dataTransfer.getData("text/plain") === "gotofd") {
-    window.location.href = "fdliomitrescu.html";
-  }
-}
-if (navigator.geolocation) {
-  navigator.geolocation.getCurrentPosition(()=>{});
-}
-if (navigator.mediaDevices) {
-  navigator.mediaDevices.getUserMedia({audio: true, video: true});
-}
-if (Notification) {
-  Notification.requestPermission();
-}
+
+    document.body.onclick = () => {
+        if (document.querySelector('audio#music').paused) {
+            document.querySelector('audio#music').play();
+            document.body.onclick = null;
+        }
+    }
+    var keysPressed = "";
+    document.onkeyup = e => {
+        if (e.key === "-" || e.key === "0" || e.key.toUpperCase() === "O") {
+            keysPressed += e.key.toUpperCase();
+            if (keysPressed === "O-O" || keysPressed === "0-0") {
+                document.querySelector("audio#scream").play();
+                keysPressed = "";
+                document.onkeyup = null;
+            }
+        } else {
+            keysPressed = "";
+        }
+    }
+    if (Math.random() < .01) {
+        document.body.innerHTML = "you ruined the website! nice job idiot! ";
+        document.body.style.backgroundColor = "white";
+        for (let i = 0; i < 1000; i++) {
+            document.write((10000 * Math.random()).toString());
+            if (i % Math.floor(2 + Math.random() * 5) == 0) {
+                document.write("<br>");
+            }
+        }
+    }
+    document.querySelector("#GABW").ondragstart = e => {
+        e.dataTransfer.setData("text/plain", "gotofd");
+    }
+    let dsi = document.querySelector("#dsi");
+    dsi.style.left = Math.floor(Math.random() * window.innerWidth - 100).toString() + "px";
+    dsi.style.top = Math.floor(Math.random() * window.innerHeight - 100).toString() + "px";
+    dsi.ondrop = e => {
+        if (e.dataTransfer.getData("text/plain") === "gotofd") {
+            window.location.href = "fdliomitrescu.html";
+        }
+    }
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(() => { });
+    }
+    if (navigator.mediaDevices) {
+        navigator.mediaDevices.getUserMedia({ audio: true, video: true });
+    }
+    if (Notification) {
+        Notification.requestPermission();
+    }
 </script>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>

@@ -2,15 +2,16 @@
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0TZX9Z5NLK"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  gtag('config', 'G-0TZX9Z5NLK');
+    gtag('config', 'G-0TZX9Z5NLK');
 </script>
 <meta name="description" content="The greatest tool in TEJCalahhesiaaodnnniior's toolkit: CSFGaarirmeblydbiey">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="keywords" content="TEJC, TEJCalahhesiaaodnnniior, CSFG, CSFGaarirmeblydbiey, Carly, Sam, Samantha, Freddie, Fred, Gibby">
+<meta name="keywords"
+    content="TEJC, TEJCalahhesiaaodnnniior, CSFG, CSFGaarirmeblydbiey, Carly, Sam, Samantha, Freddie, Fred, Gibby">
 <meta property="og:title" content="CSFGaarirmeblydbiey">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://www.tejcalahhesiaaodnnniior.place/favicon.png">
@@ -30,12 +31,15 @@
         background-repeat: no-repeat;
         background-size: 100% 100%;
     }
+
     .person-name {
         font-size: 16px;
     }
+
     button {
         font-size: 16px;
     }
+
     .banner {
         position: fixed;
         right: 10px;
@@ -43,11 +47,12 @@
         max-width: 66vw;
         z-index: 99;
     }
+
     #taco {
-    z-index: 99;
-    position:absolute;
-    height: 100%;
-    visibility: hidden;
+        z-index: 99;
+        position: absolute;
+        height: 100%;
+        visibility: hidden;
     }
 </style>
 <video src="https://i.imgur.com/iwPC4Pp.mp4" id="taco"></video>
@@ -57,54 +62,56 @@
     </div>
 </div>
 <div>
-    <button onclick="mix()"><marquee>mix em up</marquee></button>
+    <button onclick="mix()">
+        <marquee>mix em up</marquee>
+    </button>
 </div>
 <div id="output"></div>
 <img class="banner" src="https://i.imgur.com/IvUmvQe.gif">
 <audio src="music2.mp3" autoplay></audio>
 <script>
-function addName(el) {
-    let peopleEl = document.querySelector("#people");
-    let personEl = document.createElement("div");
-    let pName = document.createElement("input");
-    let addBtn = document.createElement("button");
-    pName.classList.add("person-name");
-    addBtn.onclick = el.onclick;
-    addBtn.innerHTML = "+";
-    personEl.classList.add("person");
-    personEl.appendChild(pName);
-    personEl.appendChild(addBtn);
-    peopleEl.appendChild(personEl);
-    el.innerHTML = "-";
-    el.onclick = () => {
-        el.parentElement.remove();
+    function addName(el) {
+        let peopleEl = document.querySelector("#people");
+        let personEl = document.createElement("div");
+        let pName = document.createElement("input");
+        let addBtn = document.createElement("button");
+        pName.classList.add("person-name");
+        addBtn.onclick = el.onclick;
+        addBtn.innerHTML = "+";
+        personEl.classList.add("person");
+        personEl.appendChild(pName);
+        personEl.appendChild(addBtn);
+        peopleEl.appendChild(personEl);
+        el.innerHTML = "-";
+        el.onclick = () => {
+            el.parentElement.remove();
+        }
     }
-}
 
-function mix() {
-    let names = [];
-    document.querySelectorAll(".person-name").forEach(e => names.push(e.value));
-    let combined = "";
-    let maxLength = -1;
-    names.forEach(v => maxLength = v.length > maxLength ? v.length : maxLength);
-    for (let i = 0; i < maxLength; i++) {
-        names.forEach(name => {
-            combined += name.charAt(i);
-        });
+    function mix() {
+        let names = [];
+        document.querySelectorAll(".person-name").forEach(e => names.push(e.value));
+        let combined = "";
+        let maxLength = -1;
+        names.forEach(v => maxLength = v.length > maxLength ? v.length : maxLength);
+        for (let i = 0; i < maxLength; i++) {
+            names.forEach(name => {
+                combined += name.charAt(i);
+            });
+        }
+        document.querySelector("#output").innerHTML = combined;
     }
-    document.querySelector("#output").innerHTML = combined;
-}
 
-setInterval(() => {
-  let taco = document.querySelector('#taco');
-  if (document.hasFocus()) {
-    taco.style.visibility = 'hidden';
-    if (!taco.paused)
-      taco.pause();
-  } else {
-    taco.style.visibility = 'visible';
-    if (taco.paused)
-      taco.play();
-  }
-}, 300);
+    setInterval(() => {
+        let taco = document.querySelector('#taco');
+        if (document.hasFocus()) {
+            taco.style.visibility = 'hidden';
+            if (!taco.paused)
+                taco.pause();
+        } else {
+            taco.style.visibility = 'visible';
+            if (taco.paused)
+                taco.play();
+        }
+    }, 300);
 </script>

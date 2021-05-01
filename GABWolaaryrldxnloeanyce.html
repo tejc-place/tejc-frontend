@@ -2,20 +2,23 @@
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0TZX9Z5NLK"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
 
-  gtag('config', 'G-0TZX9Z5NLK');
+    gtag('config', 'G-0TZX9Z5NLK');
 </script>
-<meta name="description" content="TEJCalahhesiaaodnnniior presents the grandest, most immersive gaming experience since 1998!">
+<meta name="description"
+    content="TEJCalahhesiaaodnnniior presents the grandest, most immersive gaming experience since 1998!">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="keywords" content="TEJC, TEJCalahhesiaaodnnniior, GABW, GABWolaaryrldxnloeanyce, Gordon, Alyx, Barnie, Wallace, Breen">
+<meta name="keywords"
+    content="TEJC, TEJCalahhesiaaodnnniior, GABW, GABWolaaryrldxnloeanyce, Gordon, Alyx, Barnie, Wallace, Breen">
 <meta property="og:title" content="GABWolaaryrldxnloeanyce">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://www.tejcalahhesiaaodnnniior.place/favicon.png">
 <meta property="og:url" content="https://www.TEJCalahhesiaaodnnniior.place/GABWolaaryrldxnloeanyce.html">
-<meta property="og:description" content="TEJCalahhesiaaodnnniior presents the grandest, most immersive gaming experience since 1998!!">
+<meta property="og:description"
+    content="TEJCalahhesiaaodnnniior presents the grandest, most immersive gaming experience since 1998!!">
 <link rel="icon" type="image/png" href="favicon.png">
 <title>GABW</title>
 <audio class="geiger" src="hl/geiger1.mp3" autoplay loop preload="metadata"></audio>
@@ -34,19 +37,19 @@
     const dmgSounds = document.querySelectorAll("audio.damage");
     const vortSounds = document.querySelectorAll("audio.vort");
     document.querySelectorAll("audio.geiger").forEach(e => {
-            e.onloadedmetadata = () => {
-                let a = Math.random() * e.duration;
-                console.log(a);
-                e.currentTime = a;
-                e.volume = Math.random();
-            };
+        e.onloadedmetadata = () => {
+            let a = Math.random() * e.duration;
+            console.log(a);
+            e.currentTime = a;
+            e.volume = Math.random();
+        };
     });
     function radiate(play) {
         document.querySelectorAll("audio.geiger").forEach(e => {
-                let a = Math.random() * e.duration;
-                console.log(a);
-                e.currentTime = a;
-                e.volume = .25 + .5 * Math.random();
+            let a = Math.random() * e.duration;
+            console.log(a);
+            e.currentTime = a;
+            e.volume = .25 + .5 * Math.random();
             if (play) e.play();
         });
     }
