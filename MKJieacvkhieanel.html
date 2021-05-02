@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0TZX9Z5NLK"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-0TZX9Z5NLK');
+</script>
+<meta name="description" content="TEJCalahhesiaaodnnniior Brain Trust presents MKJ!!">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="keywords"
+    content="TEJC, TEJCalahhesiaaodnnniior, MKJ, Michael, Kevin, Jake, Vsauce, Vsauce2, Vsauce3, DING, MKJieacvkhieanel, Smart, Brain">
+<meta property="og:title" content="MKJieacvkhieanel">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://www.tejcalahhesiaaodnnniior.place/favicon.png">
+<meta property="og:url" content="https://www.TEJCalahhesiaaodnnniior.place/MKJieacvkhieanel.html">
+<meta property="og:description" content="TEJCalahhesiaaodnnniior Brain Trust presents MKJ!!">
+<link rel="icon" type="image/png" href="favicon.png">
+<title>MKJ</title>
+<video src="https://i.imgur.com/E2bBTh4.mp4" autoplay loop></video>
+<audio src="power.mp3" autoplay loop></audio>
+<button onclick="onRefrigeratorIsRunning()" id="fridge-button">YES, MY REFRIGERATOR IS RUNNING</button>
+<br>
+<input
+    placeholder="Enter cybertext here. We will send it to our auditors and request supercomputer time to reverse engineer it and pinpoint the geometric integral of the temporal databank. Check your credit score."
+    type="text" onchange="inputWordChanged()" id="word">
+<br>
+<input type="range" min="2" step="1" onchange="wordCountChanged()" id="word-count">
+<div>Word Count:&nbsp;<span id="word-count-display" class="info-display">?</span></div>
+<table id="word-output"></table><br>
+<div>Remaining:&nbsp;<span id="remaining-letters-display" class="info-display"></span></div>
+<button onclick="processCharacters(this)" id="next-letter" disabled="true">&nbsp;&nbsp;&nbsp;Next
+    letters&nbsp;&nbsp;&nbsp;</button>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        padding: 10px;
+    }
+
+    video {
+        filter: blur(1em) brightness(1.1) contrast(1.5);
+    }
+
+    input[type="text"] {
+        width: 130%;
+    }
+
+    input[type="range"] {
+        width: 50%;
+    }
+
+    @keyframes font-size-oscillate {
+        0% {
+            font-size: 100%;
+        }
+
+        50% {
+            font-size: 300%;
+        }
+
+        51% {
+            font-size: 350%;
+        }
+
+        52% {
+            font-size: 250%;
+        }
+
+        100% {
+            font-size: 200%;
+        }
+    }
+
+    #fridge-button {
+        font-variant: small-caps;
+        padding: 10vmin;
+        animation: font-size-oscillate 20s ease-in-out 0s infinite alternate-reverse;
+        display: none;
+        border-radius: 50%;
+        background-color: lime;
+        color: #EEEEEE;
+        height: 100px;
+        max-height: 100px;
+    }
+
+    table,
+    tr,
+    td {
+        border: none;
+    }
+
+    .info-display {
+        font-family: monospace;
+        font-size: 1.25em;
+    }
+</style>
+<script>
+    document.onclick = () => {
+        document.querySelector('video').play();
+        document.querySelector('audio').play();
+        document.querySelector('button#fridge-button').style.display = "flex";
+        document.onclick = null;
+    }
+
+    var wordCountInput = document.querySelector("input#word-count");
+    var wordInput = document.querySelector("input#word");
+    var wordOutput = document.querySelector("table#word-output");
+    var remainingLetters = "";
+
+    function onRefrigeratorIsRunning() {
+        let utterance = new SpeechSynthesisUtterance("Then you better go catch it!");
+        let voices = speechSynthesis.getVoices();
+        utterance.voice = voices[Math.floor(Math.random() * voices.length)];
+        speechSynthesis.speak(utterance);
+    }
+
+    function wordCountChanged() {
+        document.querySelector("span#word-count-display").innerHTML = wordCountInput.value.toString();
+        resetWordOutput();
+    }
+
+    function resetWordOutput() {
+        let wordCount = wordCountInput.value;
+        let fullWord = wordInput.value.trim();
+        while (wordOutput.firstChild) {
+            wordOutput.removeChild(wordOutput.firstChild);
+        }
+        for (let i = 0; i < wordCount; i++) {
+            let row = document.createElement("tr");
+            row.dataset.rowComplete = 0;
+            let txtCell = document.createElement("td");
+            txtCell.textContent = fullWord.charAt(i);
+            let btnCell = document.createElement("td");
+            let btn = document.createElement("button");
+            btn.onclick = rowDone;
+            btn.textContent = "✔";
+            btn.title = "Mark this word complete."
+            btnCell.appendChild(btn);
+            row.appendChild(txtCell);
+            row.appendChild(btnCell);
+            wordOutput.appendChild(row);
+        }
+        remainingLetters = fullWord.substring(wordCount);
+        document.querySelector("button#next-letter").disabled = false;
+        document.querySelector("#remaining-letters-display").textContent = remainingLetters;
+    }
+
+    function processCharacters() {
+        let wordCount = wordCountInput.value;
+        let remainingRows = wordOutput.querySelectorAll("tr[data-row-complete='0']");
+        for (let i = 0; i < remainingRows.length; i++) {
+            remainingRows[i].querySelector("td").textContent += remainingLetters.charAt(i);
+        }
+        remainingLetters = remainingLetters.substring(remainingRows.length);
+        document.querySelector("#remaining-letters-display").textContent = remainingLetters;
+        if (remainingLetters.length == 0) {
+            document.querySelector("button#next-letter").disabled = true;
+        }
+    }
+
+    function rowDone(mouseEvent) {
+        let cell = this.parentElement;
+        let row = cell.parentElement;
+        row.dataset.rowComplete = 1;
+        row.removeChild(cell);
+    }
+
+    function inputWordChanged() {
+        wordCountInput.max = Math.max(2, Math.ceil(wordInput.value.trim().length / 2));
+        wordCountInput.value = 2;
+        wordCountChanged();
+    }
+
+    function reverseMix() {
+        let str = document.querySelector("input").value;
+        let multiples = [];
+        for (let i = 2; i <= Math.floor(str.length / 2); i++) {
+            if (str.length % i == 0) {
+                multiples.push(i);
+            }
+        }
+    }
+</script>
