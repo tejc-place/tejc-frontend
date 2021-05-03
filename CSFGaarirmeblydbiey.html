@@ -58,7 +58,7 @@
 <video src="https://i.imgur.com/iwPC4Pp.mp4" id="taco"></video>
 <div id="people">
     <div class="person">
-        <input class="person-name"><button onclick="addName(this)">+</button>
+        <input class="person-name"><button onclick="addName(this)" data-newest-button='1'>+</button>
     </div>
 </div>
 <div>
@@ -70,19 +70,28 @@
 <img class="banner" src="https://i.imgur.com/IvUmvQe.gif">
 <audio src="music2.mp3" autoplay></audio>
 <script>
-    function addName(el) {
+    var url = new URL(document.location);
+    var searchParams = url.searchParams;
+    
+    function addName(el, fillName) {
         let peopleEl = document.querySelector("#people");
         let personEl = document.createElement("div");
         let pName = document.createElement("input");
+        if (fillName) pName.value = fillName;
         let addBtn = document.createElement("button");
         pName.classList.add("person-name");
+        if (!el) {
+            el = document.querySelector("#people>.person>button[data-newest-button='1']");
+        }
         addBtn.onclick = el.onclick;
         addBtn.innerHTML = "+";
+        addBtn.dataset.newestButton = 1;
         personEl.classList.add("person");
         personEl.appendChild(pName);
         personEl.appendChild(addBtn);
         peopleEl.appendChild(personEl);
         el.innerHTML = "-";
+        el.dataset.newestButton = 0;
         el.onclick = () => {
             el.parentElement.remove();
         }
@@ -100,6 +109,9 @@
             });
         }
         document.querySelector("#output").innerHTML = combined;
+        searchParams.delete("name")
+        names.forEach(n => searchParams.append("name", n));
+        history.pushState({}, "", "?" + searchParams.toString());
     }
 
     setInterval(() => {
@@ -114,4 +126,9 @@
                 taco.play();
         }
     }, 300);
+    if (searchParams.has("name")) {
+        let names = searchParams.getAll("name");
+        names.forEach(n => addName(null, n));
+        document.querySelector("div.person").remove();
+    }
 </script>
