@@ -135,6 +135,7 @@
         addBtn.classList.add("add-remove-person");
         pName.classList.add("person-name");
         pName.onchange = () => sayMyName(pName);
+        pName.onpaste = onNamesPasted;
         if (!el) {
             el = document.querySelector("#people>.person[data-newest-person='1']>button");
         }
@@ -183,9 +184,27 @@
                 taco.play();
         }
     }, 300);
+
+    function onNamesPasted(event) {
+        let clipboardText = event.clipboardData.getData('text');
+        let lines = clipboardText.split('\n');
+        if (lines.length > 1 && event.target.parentElement.dataset.newestPerson == 1) {
+            event.target.value = lines[0];
+            for (let i = 1; i < lines.length; i++) {
+                let line = lines[i];
+                console.log(line);
+                if (line.trim()) {
+                    addName(null, line);
+                }
+            }
+            event.preventDefault();
+        }
+    }
+
     if (searchParams.has("name")) {
         let names = searchParams.getAll("name");
         names.forEach(n => addName(null, n));
         document.querySelector("div.person").remove();
     }
+    document.querySelector(".person>input.person-name").onpaste = onNamesPasted;
 </script>
