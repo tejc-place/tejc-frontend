@@ -54,32 +54,85 @@
         height: 100%;
         visibility: hidden;
     }
+
+    div#machine {
+        position: absolute;
+        left: 25px;
+        top: 25px;
+        background-color: rgba(127, 127, 167, .5);
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+    div#people {
+        max-height: 50vh;
+        overflow: auto;
+        scroll-behavior: smooth;
+        padding: 10px;
+    }
+
+    button.add-remove-person {
+        width: 1.5em;
+        height: 1.5em;
+        border-radius: 50%;
+        border: 1px solid lightgray;
+        background-color: slategray;
+        color: lightgray;
+        text-align: center;
+        justify-content: center;
+        margin-left: .5em;
+    }
+
+    div.person {
+        margin-bottom: .15em;
+    }
+
+    hr {
+        border: none;
+        background-color: lightgray;
+        height: 1px;
+    }
 </style>
 <video src="https://i.imgur.com/iwPC4Pp.mp4" id="taco"></video>
-<div id="people">
-    <div class="person">
-        <input class="person-name"><button onclick="addName(this)" data-newest-button='1'>+</button>
+<div id="machine">
+    <div id="people">
+        <div class="person">
+            <input class="person-name" onchange="sayMyName(this)"><button onclick="addName(this)" data-newest-button='1'
+                class="add-remove-person">+</button>
+        </div>
     </div>
+    <hr>
+    <div id="bottom-area">
+        <button onclick="mix()">
+            <marquee>mix em up</marquee>
+        </button>
+        <button onclick="for(let i=0;i<10;i++)addName();">+10</button>
+        <button onclick="for(let i=0;i<100;i++)addName();">+100</button>
+    </div>
+    <div id="output"></div>
 </div>
-<div>
-    <button onclick="mix()">
-        <marquee>mix em up</marquee>
-    </button>
-</div>
-<div id="output"></div>
 <img class="banner" src="https://i.imgur.com/IvUmvQe.gif">
 <audio src="music2.mp3" autoplay></audio>
 <script>
     var url = new URL(document.location);
     var searchParams = url.searchParams;
-    
+
+    function sayMyName(el) {
+        let utterance = new SpeechSynthesisUtterance(el.value || el.textContent);
+        let voices = speechSynthesis.getVoices();
+        utterance.voice = voices[Math.floor(Math.random() * voices.length)];
+        speechSynthesis.speak(utterance);
+    }
+
     function addName(el, fillName) {
         let peopleEl = document.querySelector("#people");
         let personEl = document.createElement("div");
         let pName = document.createElement("input");
         if (fillName) pName.value = fillName;
         let addBtn = document.createElement("button");
+        addBtn.classList.add("add-remove-person");
         pName.classList.add("person-name");
+        pName.onchange = () => sayMyName(pName);
         if (!el) {
             el = document.querySelector("#people>.person>button[data-newest-button='1']");
         }
@@ -108,7 +161,9 @@
                 combined += name.charAt(i);
             });
         }
-        document.querySelector("#output").innerHTML = combined;
+        let outputEl = document.querySelector("#output");
+        outputEl.innerHTML = combined;
+        sayMyName(outputEl);
         searchParams.delete("name")
         names.forEach(n => searchParams.append("name", n));
         history.pushState({}, "", "?" + searchParams.toString());
