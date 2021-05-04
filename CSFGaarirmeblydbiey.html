@@ -96,8 +96,8 @@
 <video src="https://i.imgur.com/iwPC4Pp.mp4" id="taco"></video>
 <div id="machine">
     <div id="people">
-        <div class="person">
-            <input class="person-name" onchange="sayMyName(this)"><button onclick="addName(this)" data-newest-button='1'
+        <div class="person" data-newest-person='1'>
+            <input class="person-name" onchange="sayMyName(this)"><button onclick="addName(this)"
                 class="add-remove-person">+</button>
         </div>
     </div>
@@ -136,17 +136,17 @@
         pName.classList.add("person-name");
         pName.onchange = () => sayMyName(pName);
         if (!el) {
-            el = document.querySelector("#people>.person>button[data-newest-button='1']");
+            el = document.querySelector("#people>.person[data-newest-person='1']>button");
         }
         addBtn.onclick = el.onclick;
         addBtn.innerHTML = "+";
-        addBtn.dataset.newestButton = 1;
+        personEl.dataset.newestPerson = 1;
         personEl.classList.add("person");
         personEl.appendChild(pName);
         personEl.appendChild(addBtn);
         peopleEl.appendChild(personEl);
         el.innerHTML = "-";
-        el.dataset.newestButton = 0;
+        el.parentElement.dataset.newestPerson = 0;
         el.onclick = () => {
             el.parentElement.remove();
         }
