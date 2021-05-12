@@ -168,7 +168,11 @@
         outputEl.innerHTML = combined;
         sayMyName(outputEl);
         searchParams.delete("name")
-        names.forEach(n => searchParams.append("name", n));
+        if (searchParams.has("b64")) {
+            names.forEach(n => searchParams.append("name", btoa(n)));
+        } else {
+            names.forEach(n => searchParams.append("name", n));
+        }
         history.pushState({}, "", "?" + searchParams.toString());
     }
 
@@ -203,7 +207,11 @@
 
     if (searchParams.has("name")) {
         let names = searchParams.getAll("name");
-        names.forEach(n => addName(null, n));
+        if (searchParams.has("b64")) {
+            names.forEach(n => addName(null, atob(n)));
+        } else {
+            names.forEach(n => addName(null, n));
+        }
         document.querySelector("div.person").remove();
     }
     document.querySelector(".person>input.person-name").onpaste = onNamesPasted;
