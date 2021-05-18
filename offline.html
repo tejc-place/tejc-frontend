@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<meta name="description"
+    content="The official home of TEJCalahhesiaaodnnniior. Experience hundreds of hours of fresh and curiosity-inspiring content from TEJCalahhesiaaodnnniior!">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OFFLINE sad😭</title>
+<div id="dsi" ondragover="event.preventDefault()">
+    <h1>⅔ the way to the end of time!</h1>
+</div>
+<p class="offline-message">
+    TEJC is not currently available. Please click here: <button class="cta-button" onclick="sayMyName()">⚡</button>
+</p>
+<style>
+    body {
+        height: 100vh;
+        cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='80' height='96' viewport='0 0 100 100' style='fill:black;font-size:48px;'><text y='50%'>😳</text></svg>"), auto;
+    }
+
+    @keyframes scoot {
+        0% {
+            left: 0vw;
+        }
+
+        100% {
+            left: 1000vw;
+        }
+    }
+
+    @keyframes vscoot {
+        0% {
+            top: 144px;
+            left: 0vw;
+            border: 1px dashed rgb(255, 0, 0);
+        }
+
+        100% {
+            left: 50vw;
+            top: 50vh;
+            border: 24px dashed rgb(255, 100, 255);
+        }
+    }
+
+    .offline-message {
+        font-family: sans-serif;
+        top: 144px;
+        animation: vscoot 60s linear 0s 2 alternate;
+        position: absolute;
+        padding: 10px;
+        background-color: whitesmoke;
+    }
+
+    #dsi {  
+        z-index: 99;
+        position: fixed;
+        font-family: Arial, Helvetica, sans-serif;
+        background-color: black;
+        color: white;
+        font-size: 24px;
+        text-align: center;
+        padding: 10px;
+        animation: scoot 7200s linear 0s 2 alternate;
+        max-height: 144px;
+    }
+
+    .cta-button {
+        background-color: orange;
+        border-radius: 50%;
+        padding: 4px;
+        border: 4px solid lightcoral;
+    }
+
+</style>
+<script>
+    function sayMyName() {
+        let utterance = new SpeechSynthesisUtterance("Taco bell. Hehehehe. ding. Oh! Woah! tttttt. mom! a pp and a taco bell! ahhh!");
+        let voices = speechSynthesis.getVoices();
+        utterance.voice = voices[Math.floor(Math.random() * voices.length)];
+        speechSynthesis.speak(utterance);
+    }
+    setInterval(() => {
+        document.body.style.backgroundColor = "#" + Math.floor(1 + 0xFFFFFF * Math.random()).toString(16).padStart(6, "0");
+    }, 12345);
+    window.addEventListener('online', () => {
+        window.location.reload();
+    });
+</script>
