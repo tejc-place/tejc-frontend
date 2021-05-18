@@ -8,16 +8,16 @@
 
     gtag('config', 'G-0TZX9Z5NLK');
 </script>
-<meta name="description" content="Home of TEJCalahhesiaaodnnniior">
+<meta name="description" content="The official home of TEJCalahhesiaaodnnniior. Experience hundreds of hours of fresh and curiosity-inspiring content from TEJCalahhesiaaodnnniior!">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="keywords" content="TEJC, TEJCalahhesiaaodnnniior, Tahani, Eleanor, Jason, Chidi, Religion">
-<meta property="og:title" content="TEJCalahhesiaaodnnniior">
+<meta name="keywords" content="TEJC, TEJCalahhesiaaodnnniior, Tahani, Eleanor, Jason, Chidi, Religion, Philosophy">
+<meta property="og:title" content="TEJCalahhesiaaodnnniior Home">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://www.tejcalahhesiaaodnnniior.place/favicon.png">
 <meta property="og:url" content="https://www.TEJCalahhesiaaodnnniior.place">
-<meta property="og:description" content="The official home of TEJCalahhesiaaodnnniior.">
+<meta property="og:description" content="The official home of TEJCalahhesiaaodnnniior. Experience hundreds of hours of fresh and curiosity-inspiring content from TEJCalahhesiaaodnnniior!">
 <link rel="icon" type="image/png" href="favicon.png">
-<title>TEJC</title>
+<title>TEJCalahhesiaaodnnniior Home</title>
 <div id="cool-stuff">
     <video src="https://i.imgur.com/F6WSyOn.mp4" id="taco"></video>
     <span id="timer"></span>
@@ -333,6 +333,7 @@
         'https://i.imgur.com/fO3FklI.gif',
         'https://i.imgur.com/vc5h8Ka.gif',
     ];
+    const originalTitle = document.title;
     var dur = 1;
     var toHHMMSS = function (sec_num) {
         // var sec_num = parseInt(sec, 10); // don't forget the second param
@@ -383,7 +384,7 @@
         if (document.hasFocus()) {
             notifCount = 0;
             document.querySelector('link[rel="icon"]').href = "https://www.tejcalahhesiaaodnnniior.place/favicon.png";
-            document.title = "TEJC";
+            document.title = originalTitle;
             taco.style.visibility = 'hidden';
             if (!taco.paused)
                 taco.pause();
