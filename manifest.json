@@ -1,0 +1,44 @@
+{
+    "short_name": "TEJC",
+    "name": "TEJCalahhesiaaodnnniior",
+    "icons": [
+      {
+        "src": "./icon192.png",
+        "type": "image/png",
+        "sizes": "192x192"
+      },
+      {
+        "src": "./icon512.png",
+        "type": "image/png",
+        "sizes": "512x512"
+      }
+    ],
+    "start_url": "./?source=pwa",
+    "background_color": "#FF00FF",
+    "display": "standalone",
+    "scope": "./",
+    "theme_color": "#00FF00",
+    "shortcuts": [
+      {
+        "name": "CSFGaarirmeblydbiey",
+        "short_name": "CSFG",
+        "url": "./CSFGaarirmeblydbiey.html?source=pwa"
+      },
+      {
+        "name": "GABWolaaryrldxnloeanyce",
+        "short_name": "GABW",
+        "url": "./GABWolaaryrldxnloeanyce.html?source=pwa"
+      },
+      {
+        "name": "fdliomitrescu",
+        "short_name": "fdlio",
+        "url": "./fdliomitrescu.html?source=pwa"
+      },
+      {
+        "name": "MKJieacvkhieanel",
+        "short_name": "MKJ",
+        "url": "./MKJieacvkhieanel.html?source=pwa"
+      }
+    ],
+    "description": "Weather forecast information"
+  }
