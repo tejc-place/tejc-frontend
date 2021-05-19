@@ -121,7 +121,7 @@
         data-text="I just went to www.TEJCalahhesiaaodnnniior.place and it was the best experience of my life!"
         data-related="fearismymind,@fearismymind" data-show-count="false">Tweet to @fearismymind</a>
 </div>
-<div id="dsi" ondragover="event.preventDefault()">
+<div id="dsi" ondragover="event.preventDefault()" onclick="this.requestPointerLock()">
     <h1>⅔ the way to the end of time!</h1>
 </div>
 <audio src="music.mp3" id="music" loop autoplay></audio>
@@ -201,7 +201,7 @@
     }
 
     #dsi {
-        z-index: 99;
+        z-index: 999999;
         position: fixed;
         font-family: Arial, Helvetica, sans-serif;
         background-color: black;
