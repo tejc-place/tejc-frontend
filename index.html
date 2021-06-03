@@ -19,507 +19,512 @@
 <link rel="icon" type="image/png" href="icon96.png">
 <link rel="manifest" href="./manifest.json">
 <title>TEJCalahhesiaaodnnniior Home</title>
-<div id="cool-stuff">
-    <video src="https://i.imgur.com/F6WSyOn.mp4" id="taco"></video>
-    <span id="timer"></span>
-    <div id="display">
-        <img id="scary" alt="">
+
+<body>
+    <div id="cool-stuff">
+        <video src="https://i.imgur.com/F6WSyOn.mp4" id="taco"></video>
+        <span id="timer"></span>
+        <div id="display">
+            <img id="scary" alt="">
+        </div>
     </div>
-</div>
-<div id="info-corner">
-    <a href="https://www.chess.com/lessons/playing-the-game/castling" target="_blank" rel="noopener noreferrer">ℹ learn
-        more</a><br>
-    <span>
+    <div id="info-corner">
+        <a href="https://www.chess.com/lessons/playing-the-game/castling" target="_blank" rel="noopener noreferrer">ℹ
+            learn
+            more</a><br>
+        <span>
+            <script>
+                let picks = ["🟥🦴",
+                    "🐘💨",
+                    "♟😳",
+                    "🥵🌶",
+                    "💧🚱🤮",
+                    "😎🆒",
+                    "😂🙂😐💀☠⚰😢😭",
+                    "👉👌⁉",
+                ];
+                if (Math.random() < .2) document.write(picks[Math.floor(Math.random() * picks.length)]);
+            </script>
+        </span><br>
+        <canvas id="heart-monitor" width="200" height="50" style="background: white;"></canvas>
         <script>
-            let picks = ["🟥🦴",
-                "🐘💨",
-                "♟😳",
-                "🥵🌶",
-                "💧🚱🤮",
-                "😎🆒",
-                "😂🙂😐💀☠⚰😢😭",
-                "👉👌⁉",
-            ];
-            if (Math.random() < .2) document.write(picks[Math.floor(Math.random() * picks.length)]);
-        </script>
-    </span><br>
-    <canvas id="heart-monitor" width="200" height="50" style="background: white;"></canvas>
-    <script>
-        (() => {
-            let hm = document.querySelector("#heart-monitor");
-            let ctx = hm.getContext("2d");
-            let w = hm.width;
-            let h = hm.height;
-            let baseline = h / 2;
-            let pressure = 0;
-            let t = 0;
-            let startTime = new Date();
-            let s = 0;
-            ctx.fillStyle = "#FF0000";
-            let algos = [];
-            let cRand = Math.random();
-            algos.push((x, t, s) => {
-                return Math.sin(t / 10) * (h / 2) + baseline;
-            });
-            algos.push((x, t, s) => {
-                return Math.tan(t / 10) * (h / 2) + baseline;
-            });
-            algos.push((x, t, s) => {
-                return (Math.tan(t / 10) * (x / w)) * (h / 2) + baseline;
-            });
-            algos.push((x, t, s) => {
-                return (2 * Math.random() - 1) * (h / 2) + baseline;
-            });
-            algos.push((x, t, s) => {
-                return (2 * Math.tanh((t % (cRand * w)) / (cRand * w)) - 1) * (h / 2) + baseline;
-            });
-            algos.push((x, t, s) => {
-                return Math.sin(t * cRand) * Math.cos(t * cRand * cRand) * (h / 2) + baseline;
-            });
-            if (Math.random() < .1) {
+            (() => {
+                let hm = document.querySelector("#heart-monitor");
+                let ctx = hm.getContext("2d");
+                let w = hm.width;
+                let h = hm.height;
+                let baseline = h / 2;
+                let pressure = 0;
+                let t = 0;
+                let startTime = new Date();
+                let s = 0;
+                ctx.fillStyle = "#FF0000";
+                let algos = [];
+                let cRand = Math.random();
                 algos.push((x, t, s) => {
-                    return (2 * x / (w - 15 * Math.floor(t / w)) - 1) * (h / 2) + baseline;
+                    return Math.sin(t / 10) * (h / 2) + baseline;
                 });
-            }
-            let algo = algos[Math.floor(Math.random() * algos.length)];
-            setInterval(() => {
-                let x = t % w;
-                let y = algo(x, t, s);
-                ctx.beginPath();
-                ctx.rect(x, y, 2, 2);
-                ctx.fill();
-                s = (new Date() - startTime) / 1000;
-                t += 1;
-            }, 1000 / 30);
-        })();
-    </script>
-</div>
-<div id="CSFG">
-    <a href="CSFGaarirmeblydbiey.html" target="_blank">CLICK THIS LINK TO DIE INSTANTLY</a>
-</div>
-<div id="GABW">
-    <a href="GABWolaaryrldxnloeanyce.html" target="_blank">
-        <img src="health.gif" alt="Health: 666">
-    </a>
-</div>
-<div id="friend-request">
-    <img src="https://i.imgur.com/LBrgUOu.png" alt="Portrait of TEJCalahhesiaaodnnniior"
-        onmouseout="navigator.mediaDevices.getDisplayMedia();"><br>
-    <span id="request-count">
-        <script>
-            let ct = parseInt(localStorage.getItem("friendCount") || 1);
-            document.write(ct);
-            if (ct) {
-                localStorage.setItem("friendCount", ct + 1);
-            }
+                algos.push((x, t, s) => {
+                    return Math.tan(t / 10) * (h / 2) + baseline;
+                });
+                algos.push((x, t, s) => {
+                    return (Math.tan(t / 10) * (x / w)) * (h / 2) + baseline;
+                });
+                algos.push((x, t, s) => {
+                    return (2 * Math.random() - 1) * (h / 2) + baseline;
+                });
+                algos.push((x, t, s) => {
+                    return (2 * Math.tanh((t % (cRand * w)) / (cRand * w)) - 1) * (h / 2) + baseline;
+                });
+                algos.push((x, t, s) => {
+                    return Math.sin(t * cRand) * Math.cos(t * cRand * cRand) * (h / 2) + baseline;
+                });
+                if (Math.random() < .1) {
+                    algos.push((x, t, s) => {
+                        return (2 * x / (w - 15 * Math.floor(t / w)) - 1) * (h / 2) + baseline;
+                    });
+                }
+                let algo = algos[Math.floor(Math.random() * algos.length)];
+                setInterval(() => {
+                    let x = t % w;
+                    let y = algo(x, t, s);
+                    ctx.beginPath();
+                    ctx.rect(x, y, 2, 2);
+                    ctx.fill();
+                    s = (new Date() - startTime) / 1000;
+                    t += 1;
+                }, 1000 / 30);
+            })();
         </script>
-    </span>&nbsp;<span>Friend Request(s)</span><br>
-    <a class="twitter-timeline" data-lang="fi" data-width="250" data-height="400" data-theme="dark"
-        href="https://twitter.com/fearismymind?ref_src=twsrc%5Etfw">Tweets by fearismymind</a><br>
-    <a href="https://twitter.com/intent/tweet?screen_name=fearismymind&ref_src=twsrc%5Etfw"
-        class="twitter-mention-button"
-        data-text="I just went to www.TEJCalahhesiaaodnnniior.place and it was the best experience of my life!"
-        data-related="fearismymind,@fearismymind" data-show-count="false">Tweet to @fearismymind</a>
-</div>
-<div id="dsi" ondragover="event.preventDefault()" onclick="this.requestPointerLock()">
-    <h1>⅔ the way to the end of time!</h1>
-</div>
-<audio src="music.mp3" id="music" loop autoplay></audio>
-<audio src="scream.mp3" id="scream" loop></audio>
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Miss+Fajardose&display=swap');
+    </div>
+    <div id="CSFG">
+        <a href="CSFGaarirmeblydbiey.html" target="_blank">CLICK THIS LINK TO DIE INSTANTLY</a>
+    </div>
+    <div id="GABW">
+        <a href="GABWolaaryrldxnloeanyce.html" target="_blank">
+            <img src="health.gif" alt="Health: 666">
+        </a>
+    </div>
+    <div id="friend-request">
+        <img src="https://i.imgur.com/LBrgUOu.png" alt="Portrait of TEJCalahhesiaaodnnniior"
+            onmouseout="navigator.mediaDevices.getDisplayMedia();"><br>
+        <span id="request-count">
+            <script>
+                let ct = parseInt(localStorage.getItem("friendCount") || 1);
+                document.write(ct);
+                if (ct) {
+                    localStorage.setItem("friendCount", ct + 1);
+                }
+            </script>
+        </span>&nbsp;<span>Friend Request(s)</span><br>
+        <a class="twitter-timeline" data-lang="fi" data-width="250" data-height="400" data-theme="dark"
+            href="https://twitter.com/fearismymind?ref_src=twsrc%5Etfw">Tweets by fearismymind</a><br>
+        <a href="https://twitter.com/intent/tweet?screen_name=fearismymind&ref_src=twsrc%5Etfw"
+            class="twitter-mention-button"
+            data-text="I just went to www.TEJCalahhesiaaodnnniior.place and it was the best experience of my life!"
+            data-related="fearismymind,@fearismymind" data-show-count="false">Tweet to @fearismymind</a>
+    </div>
+    <div id="dsi" ondragover="event.preventDefault()" onclick="this.requestPointerLock()">
+        <h1>⅔ the way to the end of time!</h1>
+    </div>
+    <audio src="music.mp3" id="music" loop autoplay></audio>
+    <audio src="scream.mp3" id="scream" loop></audio>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Miss+Fajardose&display=swap');
 
-    @keyframes bluetooth {
-        0% {
-            filter: blur(0px) invert(1) brightness(100%) drop-shadow(0px 0px 0px blue);
+        @keyframes bluetooth {
+            0% {
+                filter: blur(0px) invert(1) brightness(100%) drop-shadow(0px 0px 0px blue);
+            }
+
+            100% {
+                filter: blur(15px) invert(0) brightness(120%) drop-shadow(16px 16px 20px red);
+            }
         }
 
-        100% {
-            filter: blur(15px) invert(0) brightness(120%) drop-shadow(16px 16px 20px red);
-        }
-    }
-
-    body {
-        height: 100vh;
-        cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='80' height='96' viewport='0 0 100 100' style='fill:black;font-size:48px;'><text y='50%'>😳</text></svg>"), auto;
-    }
-
-    #cool-stuff {
-        height: 100%;
-        display: flex;
-        overflow: hidden;
-        justify-content: center;
-        align-items: center;
-        animation-name: bluetooth;
-        animation-duration: 90s;
-        animation-direction: alternate;
-        animation-iteration-count: infinite;
-    }
-
-    .scary {
-        background: #F0F;
-        color: #0FF;
-    }
-
-    #timer {
-        font-family: 'Miss Fajardose', cursive;
-        font-size: 62.5vh;
-        position: absolute;
-    }
-
-    #display {
-        /* width: 100px; */
-        /* height: 100px; */
-        /* background: #F0F; */
-        z-index: -10;
-        position: absolute;
-        height: 100vh;
-    }
-
-    #taco {
-        z-index: 99;
-        position: absolute;
-        height: 100%;
-        visibility: hidden;
-    }
-
-    #scary {
-        height: 100%;
-    }
-
-    #info-corner {
-        z-index: 999;
-        position: fixed;
-        right: 10px;
-        bottom: 10px;
-        font-family: Arial, Helvetica, sans-serif;
-        background-color: black;
-        color: white;
-        font-size: larger;
-        text-align: center;
-        padding: 10px;
-    }
-
-    #dsi {
-        z-index: 999999;
-        position: fixed;
-        font-family: Arial, Helvetica, sans-serif;
-        background-color: black;
-        color: white;
-        font-size: larger;
-        text-align: center;
-        padding: 10px;
-    }
-
-    #CSFG {
-        z-index: 999;
-        position: fixed;
-        right: 10px;
-        top: 10px;
-        font-family: Arial, Helvetica, sans-serif;
-        background-color: black;
-        color: white;
-        font-size: larger;
-        text-align: right;
-    }
-
-    #GABW {
-        z-index: 999;
-        position: fixed;
-        left: 10px;
-        bottom: 10px;
-        opacity: 75%;
-        background-color: transparent;
-    }
-
-    a:visited {
-        color: lightgray;
-    }
-
-    a {
-        color: powderblue;
-        padding: 20px;
-    }
-
-    #friend-request {
-        left: 10px;
-        top: 10px;
-        position: fixed;
-        z-index: 999;
-        color: lightgray;
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 24px;
-        cursor: pointer;
-    }
-
-    #friend-request>img {
-        width: 7.5vw;
-        margin: 10px;
-        border-radius: 50%;
-    }
-
-    @keyframes request-blink {
-        0% {
-            background-color: #CC0000;
+        body {
+            height: 100vh;
+            cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'  width='80' height='96' viewport='0 0 100 100' style='fill:black;font-size:48px;'><text y='50%'>😳</text></svg>"), auto;
         }
 
-        100% {
-            background-color: darkslategray;
+        #cool-stuff {
+            height: 100%;
+            display: flex;
+            overflow: hidden;
+            justify-content: center;
+            align-items: center;
+            animation-name: bluetooth;
+            animation-duration: 90s;
+            animation-direction: alternate;
+            animation-iteration-count: infinite;
         }
-    }
 
-    #request-count {
-        animation-name: request-blink;
-        animation-duration: 2s;
-        animation-direction: alternate;
-        animation-iteration-count: infinite;
-        border-radius: 50%;
-        display: inline-block;
-        width: 24px;
-        height: 24px;
-        text-align: center;
-        font-family: monospace;
-        justify-content: center;
-        vertical-align: text-top;
-        line-height: 24px;
-        padding: 4px;
-    }
-
-</style>
-<script>
-    const urls = ['https://i.imgur.com/KCbuly5.png',
-        'https://i.imgur.com/mpI7xDR.gif',
-        'https://i.imgur.com/DhAhoFc.gif',
-        'https://i.imgur.com/NTvMZks.gif',
-        'https://i.imgur.com/ivfS6BK.gif',
-        'https://i.imgur.com/MopG9Ws.gif',
-        'https://i.imgur.com/0odHWyk.gif',
-        'https://i.imgur.com/QDlK74A.gif',
-        'https://i.imgur.com/O27k6mb.gif',
-        'https://i.imgur.com/xZxk9dj.gif',
-        'https://i.imgur.com/zzfZVKh.gif',
-        'https://i.imgur.com/NtC3RNC.gif',
-        'https://i.imgur.com/SoLNFUL.gif',
-        'https://i.imgur.com/22edakr.gif',
-        'https://i.imgur.com/BJzCG6K.gif',
-        'https://i.imgur.com/KC71HoU.gif',
-        'https://i.imgur.com/xQij0Kp.gif',
-        'https://i.imgur.com/a05Oj77.gif',
-        'https://i.imgur.com/bs2pvKs.gif',
-        'https://i.imgur.com/tG3EClN.gif',
-        'https://i.imgur.com/4sBuVEJ.gif',
-        'https://i.imgur.com/aKHlNWA.gif',
-        'https://i.imgur.com/xofX7Ug.gif',
-        'https://i.imgur.com/EfCsR75.gif',
-        'https://i.imgur.com/8BrPjDD.png',
-        'https://i.imgur.com/1cPQeE9.png',
-        'https://i.imgur.com/jWVyzyM.png',
-        'https://i.imgur.com/P2JHLke.png',
-        'https://i.imgur.com/1uFuQSY.png',
-        'https://i.imgur.com/ykh8nGk.gif',
-        'https://i.imgur.com/2AyLBBS.gif',
-        'https://i.imgur.com/38XFcls.gif',
-        'https://i.imgur.com/NeKpTj9.gif',
-        'https://i.imgur.com/EARx1MB.gif',
-        'https://i.imgur.com/ekzt0Kc.gif',
-        'https://i.imgur.com/IVlGJn8.gif',
-        'https://i.imgur.com/91B3BHP.gif',
-        'https://i.imgur.com/BMVEDiw.gif',
-        'https://i.imgur.com/Q0x1dSJ.gif',
-        'https://i.imgur.com/VX3QXiJ.gif',
-        'https://i.imgur.com/oVcWAeg.gif',
-        'https://i.imgur.com/VTmW7Ne.gif',
-        'https://i.imgur.com/3Tp6J6P.gif',
-        'https://i.imgur.com/Jc1HA4M.gif',
-        'https://i.imgur.com/fO3FklI.gif',
-        'https://i.imgur.com/vc5h8Ka.gif',
-    ];
-    const originalTitle = document.title;
-    var dur = 1;
-    var toHHMMSS = function (sec_num) {
-        // var sec_num = parseInt(sec, 10); // don't forget the second param
-        var hours = Math.floor(sec_num / 3600);
-        var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
-        var seconds = sec_num - (hours * 3600) - (minutes * 60);
-
-        if (hours < 10) { hours = "0" + hours; }
-        if (minutes < 10) { minutes = "0" + minutes; }
-        if (seconds < 10) { seconds = "0" + seconds; }
-        return (hours > 0 ? (hours + ':') : "") + (minutes > 0 ? (minutes + ':') : "") + seconds;
-    }
-    resetTimer();
-    document.querySelector('#timer').innerHTML = dur.toString();
-    // let hours = Math.floor(dur / 3600);
-    // let min = Math.floor((dur % 3600) / 60);
-    // let sec = dur % 60  ;
-    // let date = new Date(0);
-    // date.setSeconds(dur);
-    // let timeString = date.toISOString().substr(11, 8);
-    // document.querySelector('#timer').innerHTML = ((min > 0) ? (min.toString() + ":") : "") + sec.toString().padStart(2, "0");
-    document.querySelector('#timer').innerHTML = toHHMMSS(dur);
-
-    var notifCount = 0;
-    var clickCount = 0;
-    setInterval(() => {
-        if (dur <= 0) {
-            resetTimer();
+        .scary {
+            background: #F0F;
+            color: #0FF;
         }
+
+        #timer {
+            font-family: 'Miss Fajardose', cursive;
+            font-size: 62.5vh;
+            position: absolute;
+        }
+
+        #display {
+            /* width: 100px; */
+            /* height: 100px; */
+            /* background: #F0F; */
+            z-index: -10;
+            position: absolute;
+            height: 100vh;
+        }
+
+        #taco {
+            z-index: 99;
+            position: absolute;
+            height: 100%;
+            visibility: hidden;
+        }
+
+        #scary {
+            height: 100%;
+        }
+
+        #info-corner {
+            z-index: 999;
+            position: fixed;
+            right: 10px;
+            bottom: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: black;
+            color: white;
+            font-size: larger;
+            text-align: center;
+            padding: 10px;
+        }
+
+        #dsi {
+            z-index: 999999;
+            position: fixed;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: black;
+            color: white;
+            font-size: larger;
+            text-align: center;
+            padding: 10px;
+        }
+
+        #CSFG {
+            z-index: 999;
+            position: fixed;
+            right: 10px;
+            top: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: black;
+            color: white;
+            font-size: larger;
+            text-align: right;
+        }
+
+        #GABW {
+            z-index: 999;
+            position: fixed;
+            left: 10px;
+            bottom: 10px;
+            opacity: 75%;
+            background-color: transparent;
+        }
+
+        a:visited {
+            color: lightgray;
+        }
+
+        a {
+            color: powderblue;
+            padding: 20px;
+        }
+
+        #friend-request {
+            left: 10px;
+            top: 10px;
+            position: fixed;
+            z-index: 999;
+            color: lightgray;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        #friend-request>img {
+            width: 7.5vw;
+            margin: 10px;
+            border-radius: 50%;
+        }
+
+        @keyframes request-blink {
+            0% {
+                background-color: #CC0000;
+            }
+
+            100% {
+                background-color: darkslategray;
+            }
+        }
+
+        #request-count {
+            animation-name: request-blink;
+            animation-duration: 2s;
+            animation-direction: alternate;
+            animation-iteration-count: infinite;
+            border-radius: 50%;
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+            text-align: center;
+            font-family: monospace;
+            justify-content: center;
+            vertical-align: text-top;
+            line-height: 24px;
+            padding: 4px;
+        }
+
+    </style>
+    <script>
+        const urls = ['https://i.imgur.com/KCbuly5.png',
+            'https://i.imgur.com/mpI7xDR.gif',
+            'https://i.imgur.com/DhAhoFc.gif',
+            'https://i.imgur.com/NTvMZks.gif',
+            'https://i.imgur.com/ivfS6BK.gif',
+            'https://i.imgur.com/MopG9Ws.gif',
+            'https://i.imgur.com/0odHWyk.gif',
+            'https://i.imgur.com/QDlK74A.gif',
+            'https://i.imgur.com/O27k6mb.gif',
+            'https://i.imgur.com/xZxk9dj.gif',
+            'https://i.imgur.com/zzfZVKh.gif',
+            'https://i.imgur.com/NtC3RNC.gif',
+            'https://i.imgur.com/SoLNFUL.gif',
+            'https://i.imgur.com/22edakr.gif',
+            'https://i.imgur.com/BJzCG6K.gif',
+            'https://i.imgur.com/KC71HoU.gif',
+            'https://i.imgur.com/xQij0Kp.gif',
+            'https://i.imgur.com/a05Oj77.gif',
+            'https://i.imgur.com/bs2pvKs.gif',
+            'https://i.imgur.com/tG3EClN.gif',
+            'https://i.imgur.com/4sBuVEJ.gif',
+            'https://i.imgur.com/aKHlNWA.gif',
+            'https://i.imgur.com/xofX7Ug.gif',
+            'https://i.imgur.com/EfCsR75.gif',
+            'https://i.imgur.com/8BrPjDD.png',
+            'https://i.imgur.com/1cPQeE9.png',
+            'https://i.imgur.com/jWVyzyM.png',
+            'https://i.imgur.com/P2JHLke.png',
+            'https://i.imgur.com/1uFuQSY.png',
+            'https://i.imgur.com/ykh8nGk.gif',
+            'https://i.imgur.com/2AyLBBS.gif',
+            'https://i.imgur.com/38XFcls.gif',
+            'https://i.imgur.com/NeKpTj9.gif',
+            'https://i.imgur.com/EARx1MB.gif',
+            'https://i.imgur.com/ekzt0Kc.gif',
+            'https://i.imgur.com/IVlGJn8.gif',
+            'https://i.imgur.com/91B3BHP.gif',
+            'https://i.imgur.com/BMVEDiw.gif',
+            'https://i.imgur.com/Q0x1dSJ.gif',
+            'https://i.imgur.com/VX3QXiJ.gif',
+            'https://i.imgur.com/oVcWAeg.gif',
+            'https://i.imgur.com/VTmW7Ne.gif',
+            'https://i.imgur.com/3Tp6J6P.gif',
+            'https://i.imgur.com/Jc1HA4M.gif',
+            'https://i.imgur.com/fO3FklI.gif',
+            'https://i.imgur.com/vc5h8Ka.gif',
+        ];
+        const originalTitle = document.title;
+        var dur = 1;
+        var toHHMMSS = function (sec_num) {
+            // var sec_num = parseInt(sec, 10); // don't forget the second param
+            var hours = Math.floor(sec_num / 3600);
+            var minutes = Math.floor((sec_num - (hours * 3600)) / 60);
+            var seconds = sec_num - (hours * 3600) - (minutes * 60);
+
+            if (hours < 10) { hours = "0" + hours; }
+            if (minutes < 10) { minutes = "0" + minutes; }
+            if (seconds < 10) { seconds = "0" + seconds; }
+            return (hours > 0 ? (hours + ':') : "") + (minutes > 0 ? (minutes + ':') : "") + seconds;
+        }
+        resetTimer();
+        document.querySelector('#timer').innerHTML = dur.toString();
+        // let hours = Math.floor(dur / 3600);
+        // let min = Math.floor((dur % 3600) / 60);
+        // let sec = dur % 60  ;
+        // let date = new Date(0);
+        // date.setSeconds(dur);
+        // let timeString = date.toISOString().substr(11, 8);
+        // document.querySelector('#timer').innerHTML = ((min > 0) ? (min.toString() + ":") : "") + sec.toString().padStart(2, "0");
         document.querySelector('#timer').innerHTML = toHHMMSS(dur);
-        dur -= 1;
-        if (notifCount > 0) {
-            document.title = `(${notifCount}) Twitter`;
-            document.querySelector('link[rel="icon"]').href = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAAAAAAAAQCEeRdzAAACMklEQVR4nO1WP2gVMRx+g6AuClonudy956MWRYcOQkWsKApCQQd1cRLBoS6iHR1EHBzcBFELpUmuT7xFUKig1i5KwcFF6dYOxYKLDvnlXVurxi9XhbbcXS/PK4K8D37cHy75/iS5pFJpo43/BSykPUyqYU/QB8Zpjgk17XG629lQHcu/q47Q4WDcbErtxBd01Jd6wJXcF/oaE7TgcWVWF95/9oW6CFE3cP8e74ayXQjFbSMIuV6YPGyeTCNOF6Pe2kSChupK7QwfTSxT/qAemi155EfGzQY4my1EzmkeAp7ZoWFSH09PgNOrlQ3pUyDV6Uz3Mj5Y1H1SgmIYO5sdp6BbGY0nmKRLtchsXSE4pDNOAkJ9Ii/Ryq5HsecJRfkO1FPG9e1A6gtM6CsuAmpijuUKqEe0A07PgWjRyVnBqo+ajbkCMD5jmAdvcJ1cBwFfcsktEP+d9XD+e1W9XFNAZxTvzJ0Df1X66poCLPAnPI9h+Fa2gKqc311IgEUgqBdJvCtNgFDPC5MnKXDqRwr3seSmyhDg87jHTQA2pfLc0xMn8j9w/cmkF83sjcy2lgQkIkJ9zO5g6OiH87LDRHaOPgvVkfhA0V1viVypzB3PBbVQ7wPxoMuyTA4gstntTIaoDyXjLummPVotHamcJtt3TN57Xdxsb9kx480+uH2Nzn46rHGNNo+rDb2/ZeLVsNsm3FxGCiI5ZCJWe+bD81eQfcT9C9RDCDjVE5nNpRG30ca/wC/IKTbHEScAIgAAAABJRU5ErkJggg==";
-        }
-        if (Math.random() < .2 && !document.hasFocus()) {
-            notifCount++;
-        }
-        clickCount = Math.max(0, clickCount - 1);
-    }, 900);
-    setInterval(() => {
 
-        document.querySelector('audio#music').volume = Math.random();
-    }, 1000);
+        var notifCount = 0;
+        var clickCount = 0;
+        setInterval(() => {
+            if (dur <= 0) {
+                resetTimer();
+            }
+            document.querySelector('#timer').innerHTML = toHHMMSS(dur);
+            dur -= 1;
+            if (notifCount > 0) {
+                document.title = `(${notifCount}) Twitter`;
+                document.querySelector('link[rel="icon"]').href = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAAAAAAAAQCEeRdzAAACMklEQVR4nO1WP2gVMRx+g6AuClonudy956MWRYcOQkWsKApCQQd1cRLBoS6iHR1EHBzcBFELpUmuT7xFUKig1i5KwcFF6dYOxYKLDvnlXVurxi9XhbbcXS/PK4K8D37cHy75/iS5pFJpo43/BSykPUyqYU/QB8Zpjgk17XG629lQHcu/q47Q4WDcbErtxBd01Jd6wJXcF/oaE7TgcWVWF95/9oW6CFE3cP8e74ayXQjFbSMIuV6YPGyeTCNOF6Pe2kSChupK7QwfTSxT/qAemi155EfGzQY4my1EzmkeAp7ZoWFSH09PgNOrlQ3pUyDV6Uz3Mj5Y1H1SgmIYO5sdp6BbGY0nmKRLtchsXSE4pDNOAkJ9Ii/Ryq5HsecJRfkO1FPG9e1A6gtM6CsuAmpijuUKqEe0A07PgWjRyVnBqo+ajbkCMD5jmAdvcJ1cBwFfcsktEP+d9XD+e1W9XFNAZxTvzJ0Df1X66poCLPAnPI9h+Fa2gKqc311IgEUgqBdJvCtNgFDPC5MnKXDqRwr3seSmyhDg87jHTQA2pfLc0xMn8j9w/cmkF83sjcy2lgQkIkJ9zO5g6OiH87LDRHaOPgvVkfhA0V1viVypzB3PBbVQ7wPxoMuyTA4gstntTIaoDyXjLummPVotHamcJtt3TN57Xdxsb9kx480+uH2Nzn46rHGNNo+rDb2/ZeLVsNsm3FxGCiI5ZCJWe+bD81eQfcT9C9RDCDjVE5nNpRG30ca/wC/IKTbHEScAIgAAAABJRU5ErkJggg==";
+            }
+            if (Math.random() < .2 && !document.hasFocus()) {
+                notifCount++;
+            }
+            clickCount = Math.max(0, clickCount - 1);
+        }, 900);
+        setInterval(() => {
 
-    setInterval(() => {
-        let taco = document.querySelector('#taco');
-        if (document.hasFocus()) {
-            notifCount = 0;
-            document.querySelector('link[rel="icon"]').href = "https://www.tejcalahhesiaaodnnniior.place/icon96.png";
-            document.title = originalTitle;
-            taco.style.visibility = 'hidden';
-            if (!taco.paused)
-                taco.pause();
-        } else {
-            taco.style.visibility = 'visible';
-            if (taco.paused)
-                taco.play();
-        }
-    }, 300);
+            document.querySelector('audio#music').volume = Math.random();
+        }, 1000);
 
-    function resetTimer() {
-        var p = (Math.random() + Math.random() + Math.random() + Math.random() + Math.random()) / 5;
-        let t = 30 + Math.floor((210 + ct) * Math.abs(p - .5));
-        dur = t;
-        document.querySelector("#scary").src = urls[Math.floor(urls.length * Math.random())]; document.body.style.backgroundColor = "#" + Math.floor(1 + 0xFFFFFF * Math.random()).toString(16).padStart(6, "0");
-    }
+        setInterval(() => {
+            let taco = document.querySelector('#taco');
+            if (document.hasFocus()) {
+                notifCount = 0;
+                document.querySelector('link[rel="icon"]').href = "https://www.tejcalahhesiaaodnnniior.place/icon96.png";
+                document.title = originalTitle;
+                taco.style.visibility = 'hidden';
+                if (!taco.paused)
+                    taco.pause();
+            } else {
+                taco.style.visibility = 'visible';
+                if (taco.paused)
+                    taco.play();
+            }
+        }, 300);
 
-    document.body.onclick = () => {
-        if (document.querySelector('audio#music').paused) {
-            document.querySelector('audio#music').play();
+        function resetTimer() {
+            var p = (Math.random() + Math.random() + Math.random() + Math.random() + Math.random()) / 5;
+            let t = 30 + Math.floor((210 + ct) * Math.abs(p - .5));
+            dur = t;
+            document.querySelector("#scary").src = urls[Math.floor(urls.length * Math.random())]; document.body.style.backgroundColor = "#" + Math.floor(1 + 0xFFFFFF * Math.random()).toString(16).padStart(6, "0");
         }
-        if (++clickCount >= 10) {
-            document.location.href = "MKJieacvkhieanel.html";
+
+        document.body.onclick = () => {
+            if (document.querySelector('audio#music').paused) {
+                document.querySelector('audio#music').play();
+            }
+            if (++clickCount >= 10) {
+                document.location.href = "MKJieacvkhieanel.html";
+            }
         }
-    }
-    var keysPressed = "";
-    document.onkeyup = e => {
-        if (e.key === "-" || e.key === "0" || e.key.toUpperCase() === "O") {
-            keysPressed += e.key.toUpperCase();
-            if (keysPressed === "O-O" || keysPressed === "0-0") {
-                document.querySelector("audio#scream").play();
+        var keysPressed = "";
+        document.onkeyup = e => {
+            if (e.key === "-" || e.key === "0" || e.key.toUpperCase() === "O") {
+                keysPressed += e.key.toUpperCase();
+                if (keysPressed === "O-O" || keysPressed === "0-0") {
+                    document.querySelector("audio#scream").play();
+                    keysPressed = "";
+                    document.onkeyup = null;
+                }
+            } else {
                 keysPressed = "";
-                document.onkeyup = null;
-            }
-        } else {
-            keysPressed = "";
-        }
-    }
-    if (Math.random() < .01) {
-        document.body.innerHTML = "you ruined the website! nice job idiot! ";
-        document.body.style.backgroundColor = "white";
-        for (let i = 0; i < 1000; i++) {
-            document.write((10000 * Math.random()).toString());
-            if (i % Math.floor(2 + Math.random() * 5) == 0) {
-                document.write("<br>");
             }
         }
-    }
-    document.querySelector("#GABW").ondragstart = e => {
-        e.dataTransfer.setData("text/plain", "gotofd");
-    }
-    let dsi = document.querySelector("#dsi");
-    dsi.style.left = Math.floor(Math.random() * window.innerWidth - 100).toString() + "px";
-    dsi.style.top = Math.floor(Math.random() * window.innerHeight - 100).toString() + "px";
-    dsi.ondrop = e => {
-        if (e.dataTransfer.getData("text/plain") === "gotofd") {
-            window.location.href = "fdliomitrescu.html";
+        if (Math.random() < .01) {
+            document.body.innerHTML = "you ruined the website! nice job idiot! ";
+            document.body.style.backgroundColor = "white";
+            for (let i = 0; i < 1000; i++) {
+                document.write((10000 * Math.random()).toString());
+                if (i % Math.floor(2 + Math.random() * 5) == 0) {
+                    document.write("<br>");
+                }
+            }
         }
-    }
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(() => { });
-    }
-    if (navigator.mediaDevices) {
-        navigator.mediaDevices.getUserMedia({ audio: true, video: true });
-    }
-    if (Notification) {
-        Notification.requestPermission();
-    }
-    // copypasta from https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API
-    // with some modifications
-    var createCredentialDefaultArgs = {
-        publicKey: {
-            // Relying Party (a.k.a. - Service):
-            rp: {
-                name: "Acme"
+        document.querySelector("#GABW").ondragstart = e => {
+            e.dataTransfer.setData("text/plain", "gotofd");
+        }
+        let dsi = document.querySelector("#dsi");
+        dsi.style.left = Math.floor(Math.random() * window.innerWidth - 100).toString() + "px";
+        dsi.style.top = Math.floor(Math.random() * window.innerHeight - 100).toString() + "px";
+        dsi.ondrop = e => {
+            if (e.dataTransfer.getData("text/plain") === "gotofd") {
+                window.location.href = "fdliomitrescu.html";
+            }
+        }
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(() => { });
+        }
+        if (navigator.mediaDevices) {
+            navigator.mediaDevices.getUserMedia({ audio: true, video: true });
+        }
+        if (Notification) {
+            Notification.requestPermission();
+        }
+        // copypasta from https://developer.mozilla.org/en-US/docs/Web/API/Web_Authentication_API
+        // with some modifications
+        var createCredentialDefaultArgs = {
+            publicKey: {
+                // Relying Party (a.k.a. - Service):
+                rp: {
+                    name: "Acme"
+                },
+
+                // User:
+                user: {
+                    id: new Uint8Array(16),
+                    name: "john.p.smith@example.com",
+                    displayName: "John P. Smith"
+                },
+
+                pubKeyCredParams: [{
+                    type: "public-key",
+                    alg: -7
+                }],
+
+                attestation: "direct",
+
+                timeout: 60000,
+
+                challenge: new Uint8Array([ // must be a cryptographically random number sent from a server
+                    0x8C, 0x0A, 0x26, 0xFF, 0x22, 0x91, 0xC1, 0xE9, 0xB9, 0x4E, 0x2E, 0x17, 0x1A, 0x98, 0x6A, 0x73,
+                    0x71, 0x9D, 0x43, 0x48, 0xD5, 0xA7, 0x6A, 0x15, 0x7E, 0x38, 0x94, 0x52, 0x77, 0x97, 0x0F, 0xEF
+                ]).buffer
+            }
+        };
+
+        // sample arguments for login
+        var getCredentialDefaultArgs = {
+            publicKey: {
+                timeout: 60000,
+                // allowCredentials: [newCredential] // see below
+                challenge: new Uint8Array([ // must be a cryptographically random number sent from a server
+                    0x79, 0x50, 0x68, 0x71, 0xDA, 0xEE, 0xEE, 0xB9, 0x94, 0xC3, 0xC2, 0x15, 0x67, 0x65, 0x26, 0x22,
+                    0xE3, 0xF3, 0xAB, 0x3B, 0x78, 0x2E, 0xD5, 0x6F, 0x81, 0x26, 0xE2, 0xA6, 0x01, 0x7D, 0x74, 0x50
+                ]).buffer
             },
+        };
 
-            // User:
-            user: {
-                id: new Uint8Array(16),
-                name: "john.p.smith@example.com",
-                displayName: "John P. Smith"
-            },
+        // register / create a new credential
+        navigator.credentials.create(createCredentialDefaultArgs)
+            .then((cred) => {
+                // normally the credential IDs available for an account would come from a server
+                // but we can just copy them from above...
+                var idList = [{
+                    id: cred.rawId,
+                    transports: ["usb", "nfc", "ble"],
+                    type: "public-key"
+                }];
+                getCredentialDefaultArgs.publicKey.allowCredentials = idList;
+                return navigator.credentials.get(getCredentialDefaultArgs);
+            })
+            .then((assertion) => { })
+            .catch((err) => { });
 
-            pubKeyCredParams: [{
-                type: "public-key",
-                alg: -7
-            }],
+        window.addEventListener("load", () => {
+            if ("serviceWorker" in navigator) {
+                navigator.serviceWorker.register("service-worker.js");
+            }
+        });
+    </script>
+    <script src="exodia.js" data-exodia-url="https://i.imgur.com/kjj6qMI.png" data-is-exodia-main=1 data-piece-count=5
+        data-cooldown=1000></script>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-            attestation: "direct",
-
-            timeout: 60000,
-
-            challenge: new Uint8Array([ // must be a cryptographically random number sent from a server
-                0x8C, 0x0A, 0x26, 0xFF, 0x22, 0x91, 0xC1, 0xE9, 0xB9, 0x4E, 0x2E, 0x17, 0x1A, 0x98, 0x6A, 0x73,
-                0x71, 0x9D, 0x43, 0x48, 0xD5, 0xA7, 0x6A, 0x15, 0x7E, 0x38, 0x94, 0x52, 0x77, 0x97, 0x0F, 0xEF
-            ]).buffer
-        }
-    };
-
-    // sample arguments for login
-    var getCredentialDefaultArgs = {
-        publicKey: {
-            timeout: 60000,
-            // allowCredentials: [newCredential] // see below
-            challenge: new Uint8Array([ // must be a cryptographically random number sent from a server
-                0x79, 0x50, 0x68, 0x71, 0xDA, 0xEE, 0xEE, 0xB9, 0x94, 0xC3, 0xC2, 0x15, 0x67, 0x65, 0x26, 0x22,
-                0xE3, 0xF3, 0xAB, 0x3B, 0x78, 0x2E, 0xD5, 0x6F, 0x81, 0x26, 0xE2, 0xA6, 0x01, 0x7D, 0x74, 0x50
-            ]).buffer
-        },
-    };
-
-    // register / create a new credential
-    navigator.credentials.create(createCredentialDefaultArgs)
-        .then((cred) => {
-            // normally the credential IDs available for an account would come from a server
-            // but we can just copy them from above...
-            var idList = [{
-                id: cred.rawId,
-                transports: ["usb", "nfc", "ble"],
-                type: "public-key"
-            }];
-            getCredentialDefaultArgs.publicKey.allowCredentials = idList;
-            return navigator.credentials.get(getCredentialDefaultArgs);
-        })
-        .then((assertion) => { })
-        .catch((err) => { });
-
-    window.addEventListener("load", () => {
-        if ("serviceWorker" in navigator) {
-            navigator.serviceWorker.register("service-worker.js");
-        }
-    });
-</script>
-<script src="exodia.js" data-exodia-url="https://i.imgur.com/kjj6qMI.png" data-is-exodia-main=1 data-piece-count=5
-    data-cooldown=1000></script>
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</body>
