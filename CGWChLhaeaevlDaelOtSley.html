@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0TZX9Z5NLK"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-0TZX9Z5NLK');
+</script>
+<meta name="description" content="TEJCalahhesiaaodnnniior Presents the Most Engaging Puzzle Game since 2011">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="keywords" content="TEJC, TEJCalahhesiaaodnnniior, CGWC, CGWChLhaeaevlDaelOtSley">
+<meta property="og:title" content="CGWChLhaeaevlDaelOtSley">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://www.tejcalahhesiaaodnnniior.place/icon96.png">
+<meta property="og:url" content="https://www.TEJCalahhesiaaodnnniior.place/CGWChLhaeaevlDaelOtSley.html">
+<meta property="og:description" content="TEJCalahhesiaaodnnniior Presents the Most Engaging Puzzle Game since 2011">
+<link rel="icon" type="image/png" href="icon96.png">
+<link rel="manifest" href="./manifest.json">
+<title>CGWChLhaeaevlDaelOtSley</title>
+<style>
+    body {
+        width: 100vw;
+        height: 100vh;
+        padding: 0;
+        margin: 0;
+    }
+
+    canvas#display {
+        width: 100vw;
+        height: 100vh;
+        background-color: white;
+        padding: 0;
+        margin: 0;
+    }
+
+    img.asset {
+        display: none;
+        visibility: hidden;
+    }
+
+</style>
+
+<body>
+    <canvas width="1280" height="720" id="display" onmousedown="this.requestPointerLock()"></canvas>
+    <img src="https://i.imgur.com/AKkvtoP.png" alt="" class="asset" id="bportal">
+    <img src="https://i.imgur.com/7vAVRbD.png" alt="" class="asset" id="oportal">
+    <img src="https://i.imgur.com/Cx6AnKs.png" alt="" class="asset" id="player">
+    <script>
+        let canv = document.querySelector("canvas#display");
+        /** @type {CanvasRenderingContext2D} */
+        let ctx = canv.getContext("2d");
+        let absoluteWidth = canv.width;
+        let absoluteHeight = canv.height;
+        let clientWidth = canv.clientWidth;
+        let clientHeight = canv.clientHeight;
+        let chunk = Math.floor(Math.pow(10, Math.max(0, Math.floor(Math.log10(absoluteHeight)) - 1)));
+        let assets = {};
+        document.querySelectorAll("img.asset").forEach(e => {
+            if (e.id) {
+                assets[e.id] = e;
+            }
+        });
+        let _allAssetsLoaded = false;
+
+        function clamp(num, min, max) {
+            if (min === undefined) {
+                min = 0;
+            }
+            if (max === undefined) {
+                max = 1;
+            }
+            return Math.max(Math.min(num, max), min);
+        }
+
+        function toAbsolute(x, y) {
+            let result = {};
+            if (x || x === 0) {
+                result.x = absoluteWidth * x;// * clamp(x, 0, 1);
+            }
+            if (y || y === 0) {
+                result.y = absoluteHeight * y;// * clamp(y, 0, 1);
+            }
+            return result;
+        }
+
+        function fromClient(x, y) {
+            clientWidth = canv.clientWidth;
+            clientHeight = canv.clientHeight;
+
+            let result = {};
+            if (x || x === 0) {
+                result.x = (x / clientWidth/*, 0, 1*/);
+            }
+            if (y || y === 0) {
+                result.y = (y / clientHeight/*, 0, 1*/);
+            }
+            return result;
+        }
+
+        function fromAbsolute(x, y) {
+            let result = {};
+            if (x || x === 0) {
+                result.x = x / absoluteWidth;
+            }
+            if (y || y === 0) {
+                result.y = y / absoluteHeight;
+            }
+            return result;
+        }
+
+        function distanceSquared(x1, y1, x2, y2) {
+            return (x2 - x1) * (x2 - x1) + (y2 - y1) * (y2 - y1);
+        }
+
+        function allAssetsLoaded() {
+            if (_allAssetsLoaded) return true;
+            for (let assetName in assets) {
+                if (!assets[assetName].complete) return false;
+            }
+            return true;
+        }
+
+        function biggify(n, factor) {
+            // return;
+            if (!factor) {
+                factor = 10;
+            } else if (factor === 1) {
+                return Infinity;
+            }
+            if (n === 0) {
+                return Infinity;
+            }
+            n = Math.abs(n);
+            let coeff = 1;
+            while (n < 1) {
+                coeff *= factor;
+                n *= factor;
+            }
+            return coeff;
+        }
+
+        let center = toAbsolute(0.5, 0.5);
+
+        let cursorX = 0.5;
+        let cursorY = 0.5;
+
+        let playerImg = assets["player"];
+        playerImg.width = 48;
+        playerImg.height = 96;
+        let bPortalImg = assets["bportal"];
+        let oPortalImg = assets["oportal"];
+        let bPortalImgPos;
+        let oPortalImgPos;
+        let oPortalRadius;
+        let bPortalRadius;
+        let oPortalCenter;
+        let bPortalCenter;
+        let paused = true;
+        const _lines = [
+            "moon rocks ! 🌑",
+            "moon cause cancer ! 🌑",
+            "lemons are human-made 🍋",
+            "there is no cake! 🎂🚫",
+            "this is the shutter speed portal thing",
+            "burning people! put them out! 🔥💧",
+            "ooooouuuuuter space!",
+            "hello, how are you holding up? because i am a tuber 🥔",
+        ];
+        if (Math.random() < 0.1) {
+            _lines.push("where am i 🧠");
+        }
+        let lines = [];
+        for (let i = 0; i < _lines.length; i++) {
+            let r = Math.floor(Math.random() * _lines.length);
+            lines.push(_lines.splice(r, 1)[0]);
+        }
+
+        function draw(timestamp) {
+            ctx.clearRect(0, 0, absoluteWidth, absoluteHeight);
+
+            if (allAssetsLoaded() && !paused) {
+                if (!oPortalImgPos) {
+                    oPortalImgPos = fromAbsolute(absoluteWidth - oPortalImg.width, Math.random() * (absoluteHeight - oPortalImg.height));
+                }
+                if (!bPortalImgPos) {
+                    bPortalImgPos = fromAbsolute(0, Math.random() * (absoluteHeight - bPortalImg.height));
+                }
+                oPortalRadius = fromAbsolute(oPortalImg.width * 172 / 2048).x; // assumes width=height
+                bPortalRadius = fromAbsolute(bPortalImg.width * 172 / 2048).x; // assumes width=height
+                let bportalAbs = toAbsolute(bPortalImgPos.x, bPortalImgPos.y);
+                let oportalAbs = toAbsolute(oPortalImgPos.x, oPortalImgPos.y);
+                bPortalCenter = fromAbsolute(bportalAbs.x + bPortalImg.width / 2, bportalAbs.y + bPortalImg.height / 2);
+                oPortalCenter = fromAbsolute(oportalAbs.x + oPortalImg.width / 2, oportalAbs.y + oPortalImg.height / 2);
+                ctx.drawImage(bPortalImg, bportalAbs.x, bportalAbs.y);
+                ctx.drawImage(oPortalImg, oportalAbs.x, oportalAbs.y);
+                let cursorPos = toAbsolute(cursorX, cursorY);
+                ctx.drawImage(playerImg, cursorPos.x - playerImg.width / 2, cursorPos.y - playerImg.height / 2, playerImg.width, playerImg.height);
+
+                ctx.textAlign = "right";
+                ctx.textBaseline = "bottom";
+                let time = Math.floor(timestamp / 4000);
+                ctx.fillText(lines[time % lines.length], absoluteWidth, absoluteHeight)
+            } else {
+                ctx.textAlign = "center";
+                ctx.textBaseline = "middle";
+                ctx.fillText(`(${paused ? "paused, " : ""}click to play)`, center.x, center.y);
+            }
+        }
+
+        canv.addEventListener("mousemove", e => {
+            if (document.pointerLockElement === canv) {
+                paused = false;
+                let relDiff = fromClient(e.movementX, e.movementY);
+                cursorX = cursorX + (relDiff.x || 0);
+                cursorY = cursorY + (relDiff.y || 0);
+
+                if (oPortalCenter && bPortalCenter) {
+                    let bportalDist = distanceSquared(cursorX, cursorY, bPortalCenter.x, bPortalCenter.y);
+                    // console.log(bPortalRadius * bPortalRadius);
+                    let factor = Math.min(biggify(relDiff.x, 2), biggify(relDiff.y, 2));
+                    let directionX = clamp(relDiff.x * factor, -10, 10);
+                    let directionY = clamp(relDiff.y * factor, -10, 10);
+                    let moveCoeff = 0.05;
+                    if (bportalDist <= (bPortalRadius * bPortalRadius)) {
+                        cursorX = oPortalCenter.x + moveCoeff * directionX;
+                        cursorY = oPortalCenter.y + moveCoeff * directionY;
+                    } else if (distanceSquared(cursorX, cursorY, oPortalCenter.x, oPortalCenter.y) <= (oPortalRadius * oPortalRadius)) {
+                        cursorX = bPortalCenter.x + moveCoeff * directionX;
+                        cursorY = bPortalCenter.y + moveCoeff * directionY;
+                    }
+                }
+
+                cursorX = clamp(cursorX);
+                cursorY = clamp(cursorY);
+
+                requestAnimationFrame(draw);
+            } else {
+                if (!paused) {
+                    paused = true;
+                    requestAnimationFrame(draw);
+                }
+            }
+        });
+
+        draw();
+    </script>
+</body>
