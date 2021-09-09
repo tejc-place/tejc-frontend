@@ -1,0 +1,196 @@
+<style>
+    canvas {
+        background: white;
+    }
+</style>
+<h1>MIDIuninssgtitiecrtrauaflmlaecnet?</h1>
+<div style="margin: 10px;">
+    <label for="base-octave">base octave</label>
+    <input id="base-octave" value="3" type="number" max="7" min="-2">
+    |
+    <label for="bpm">bpm</label>
+    <input id="bpm" value="120" type="number" min="1">
+    |
+    <select id="device-selector">
+
+    </select>
+    |
+    <button id="start-button">go</button>
+</div>
+<canvas id="display" width=1280 height=720></canvas>
+<div style="margin: 10px">
+    <label for="import-export-riff">import / export song</label>
+    <input id="import-export-riff">
+    <button id="import-riff">import</button>
+</div>
+<script>
+    var canv = document.querySelector("canvas#display");
+    /**
+     * @type {CanvasRenderingContext2D}
+    */
+    var ctx = canv.getContext("2d");
+    var gridWidth = 36;
+    var gridHeight = 24;
+    var cellWidth = (canv.width / gridWidth);
+    var cellHeight = (canv.height / gridHeight);
+
+    /**
+     * @type {MIDIAccess}
+     */
+    var midiAccess = null;
+    var deviceSelector = document.querySelector("select#device-selector");
+    var outputDevice = null;
+
+    navigator.requestMIDIAccess().then(access => {
+            console.log(access);
+            midiAccess = access;
+            midiAccess.outputs.forEach(output => {
+                let opt = document.createElement("option");
+                opt.value = output.id;
+                opt.innerHTML = output.name;
+                deviceSelector.appendChild(opt);
+                deviceSelector.value = opt.value;
+                outputDevice = midiAccess.outputs.get(deviceSelector.value);
+            
+                deviceSelector.addEventListener("change", event => {
+                    outputDevice = midiAccess.outputs.get(event.target.value);
+                });
+            });
+    });
+
+
+    var noteValues =  [];
+
+    for (var i = 0; i < gridWidth; i++) {
+        noteValues[i] = null;
+    }
+
+    var baseOctave = 3;
+    var bpm = 120;
+    var zeroNoteNumbers = [24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35];
+    var baseNoteNumbers = zeroNoteNumbers.map((v, idx, arr) => (v + baseOctave * 12));
+    var noteNames = "C C#/Db D D#/Eb E F F#/Gb G G#/Ab A A#/Bb B".split(" ");
+
+    document.querySelector("input#base-octave").addEventListener("change", event => {
+        baseOctave = parseInt(event.target.value);
+    });
+    document.querySelector("input#bpm").addEventListener("change", event => {
+        bpm = parseInt(event.target.value);
+    });
+    
+    function drawColumn(colX) {
+        for (var y = 0; y < gridHeight; y++) {
+            ctx.rect(colX * cellWidth, y * cellHeight, cellWidth, cellHeight);
+        }
+    }
+
+    function drawGrid() {
+        ctx.beginPath();
+        for (var x = 0; x < gridWidth; x++) {
+            // for (var y = 0; y < gridHeight; y++) {
+            //     ctx.rect(x * cellWidth, y * cellHeight, cellWidth, cellHeight);
+            // }
+            drawColumn(x);
+        }
+        ctx.strokeStyle = "2px solid black";
+        ctx.closePath();
+        ctx.stroke();
+    }
+
+    function drawNoteNames(column) {
+        column = column ?? 0;
+        ctx.textBaseline = "middle";
+        // ctx.textAlign = "center";
+        ctx.font = "16px cursive";
+        ctx.fillStyle = "#BBB";
+        for (var i = 0; i < gridHeight; i++) {
+            ctx.fillText(noteNames[(gridHeight - i - 1) % 12], column * cellWidth + 2, i * cellHeight + cellHeight / 2);
+        }
+    }
+    
+    function drawFrame() {
+        ctx.clearRect(0, 0, canv.width, canv.height);
+        drawGrid();
+        drawSelectedNotes();
+        for (var i = 0; i < Math.floor(gridWidth / 12); i++) {
+            drawNoteNames(i * 12);
+        }
+        // requestAnimationFrame(drawFrame);
+    }
+
+    function drawSelectedNotes() {
+        ctx.beginPath();
+        // ctx.globalAlpha = 1;
+        ctx.fillStyle = "#DD44DD";
+        // debugger;
+        for (var i = 0; i < noteValues.length; i++) {
+            if ((noteValues[i] === 0 || noteValues[i]) && noteValues[i] !== -1) {
+                if (noteValues[i] instanceof Array) {
+                    noteValues[i].forEach(v => {
+                        ctx.rect(cellWidth * i, cellHeight * v, cellWidth, cellHeight);
+                    })
+                } else {
+                    ctx.rect(cellWidth * i, cellHeight * noteValues[i], cellWidth, cellHeight);
+                }
+            }
+        }
+        ctx.closePath();
+        ctx.fill();
+        // ctx.globalAlpha = 1;
+    }
+
+    /**
+     * @param {MouseEvent} event
+    */
+    function canvasClick(event) {
+        let clickGridX = Math.floor(event.offsetX / cellWidth);
+        let clickGridY = Math.floor(event.offsetY / cellHeight);
+        if (noteValues[clickGridX] === clickGridY) {
+            noteValues[clickGridX] = null;
+        } else {
+            if (event.shiftKey && (noteValues[clickGridX] != null && noteValues[clickGridX] != -1)) {
+                if (noteValues[clickGridX] instanceof Array) {
+                    noteValues[clickGridX].push(clickGridY);
+                } else {
+                    noteValues[clickGridX] = [noteValues[clickGridX], clickGridY];
+                }
+            } else {
+                noteValues[clickGridX] = clickGridY;
+            }
+        }
+        drawFrame();
+
+        // drawSelectedNotes();
+        // ctx.fillRect(cellWidth * clickGridX, cellHeight * clickGridY, cellWidth, cellHeight)
+    }
+
+    function playRiff() {
+        let startDelay = 750;
+        let status = 144;
+        let noteVel = 127;
+        for (var i = 0; i < noteValues.length; i++) {
+            if ((noteValues[i] === 0 || noteValues[i]) && noteValues[i] !== -1) {
+                let delay = startDelay + i * 60000 / bpm;
+                if (noteValues[i] instanceof Array) {
+                    noteValues[i].forEach(note => {
+                        let value = 24 + (gridHeight - note - 1) + baseOctave * 12;
+                        setTimeout(() => outputDevice.send([status, value, noteVel]), delay);
+                    });
+                } else {
+                    let value = 24 + (gridHeight - noteValues[i] - 1) + baseOctave * 12;
+                    setTimeout(() => outputDevice.send([status, value, noteVel]), delay);
+                }
+            }
+        }
+        document.querySelector("input#import-export-riff").value = JSON.stringify(noteValues.map(v => v === null ? -1 : v));
+    }
+
+    canv.addEventListener("mouseup", canvasClick);
+    document.querySelector("button#start-button").addEventListener("click", () => playRiff());
+    document.querySelector("button#import-riff").addEventListener("click", () => {
+        noteValues = JSON.parse(document.querySelector("input#import-export-riff").value).map(v => v === -1 ? null : v);
+        drawFrame();
+    })
+
+    drawFrame();
+</script>
