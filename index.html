@@ -30,6 +30,11 @@
             <img id="scary" alt="">
         </div>
     </div>
+    <div id="super-button">
+        <a href="./CGWChLhaeaevlDaelOtSley.html">
+            <img src="https://i.imgur.com/kwNoM5d.png" width=300>
+        </a>
+    </div>
     <div id="info-corner">
         <a href="https://www.chess.com/lessons/playing-the-game/castling" target="_blank" rel="noopener noreferrer">ℹ
             learn
@@ -203,6 +208,36 @@
             font-size: larger;
             text-align: center;
             padding: 10px;
+        }
+
+        @keyframes super-button-anim {
+            0% {
+                left: 0;
+                top: 0;
+            }
+            10% {
+                top: 50vh;
+            }
+            90% {
+                left: 50vw;
+                top: 10vh;
+            }
+            100% {
+                left: calc(100vw - 300px);
+                /* left: 100px; */
+                top: calc(100vh - 458px);
+                /* top: 100px; */
+            }
+        }
+
+        #super-button {
+            z-index: 999999;
+            /* @keyframes duration | easing-function | delay |
+            iteration-count | direction | fill-mode | play-state | name */
+            animation: 0.5s ease-out 0s infinite alternate-reverse super-button-anim;
+            left: 0;
+            top: 0;
+            position: fixed;
         }
 
         #dsi {
