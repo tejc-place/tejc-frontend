@@ -326,6 +326,7 @@
         }
 
     </style>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
     <script>
         const urls = ['https://i.imgur.com/KCbuly5.png',
             'https://i.imgur.com/mpI7xDR.gif',
@@ -559,6 +560,16 @@
                 navigator.serviceWorker.register("service-worker.js");
             }
         });
+        let d = new Date();
+        if ((d.getMonth === 11 && d.getDate() === 2) || (document.location.hash && document.location.hash === "#birthday")) {
+            setInterval(() => {
+                var confettiDefaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+                let particleCt = 50;
+                confetti(Object.assign({}, confettiDefaults, { particleCt, origin: { x: Math.random() * .3, y: Math.random() - 0.2 } }));
+                confetti(Object.assign({}, confettiDefaults, { particleCt, origin: { x: Math.random() * .3 + .3, y: Math.random() - 0.2 } }));
+                confetti(Object.assign({}, confettiDefaults, { particleCt, origin: { x: Math.random() * .3 + .6, y: Math.random() - 0.2 } }));
+            }, 500);
+        }
     </script>
     <script src="exodia.js" data-exodia-url="https://i.imgur.com/kjj6qMI.png" data-is-exodia-main=1 data-piece-count=5
         data-cooldown=1000></script>
