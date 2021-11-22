@@ -467,7 +467,7 @@
                 keysPressed = "";
             }
         }
-        if (Math.random() < .01) {
+        if (Math.random() < .01 || (document.location.hash && document.location.hash === "#break")) {
             document.body.innerHTML = "you ruined the website! nice job idiot! ";
             document.body.style.backgroundColor = "white";
             for (let i = 0; i < 1000; i++) {
