@@ -113,8 +113,10 @@
         </a>
     </div>
     <div id="friend-request">
-        <img src="https://i.imgur.com/LBrgUOu.png" alt="Portrait of TEJCalahhesiaaodnnniior"
-            onmouseout="navigator.mediaDevices.getDisplayMedia();"><br>
+        <span id="pfp">
+            <img src="https://i.imgur.com/LBrgUOu.png" alt="Portrait of TEJCalahhesiaaodnnniior"
+            onmouseout="navigator.mediaDevices.getDisplayMedia();">
+        </span><br>
         <span id="request-count">
             <script>
                 let ct = parseInt(localStorage.getItem("friendCount") || 1);
@@ -292,7 +294,7 @@
             cursor: pointer;
         }
 
-        #friend-request>img {
+        #friend-request>#pfp>img, #friend-request>#pfp>video {
             width: 7.5vw;
             margin: 10px;
             border-radius: 50%;
@@ -474,6 +476,16 @@
                     document.write("<br>");
                 }
             }
+        }
+        if (Math.random() < .1 || (document.location.hash && document.location.hash === "#pfp")) {
+            let pfpSpan = document.querySelector("#friend-request>#pfp");
+            pfpSpan.removeChild(pfpSpan.children[0]);
+            let pfpVid = document.createElement("video");
+            pfpVid.muted = true;
+            pfpVid.autoplay = true;
+            pfpVid.loop = true;
+            pfpVid.src = "https://i.imgur.com/WBcdows.mp4";
+            pfpSpan.appendChild(pfpVid);
         }
         document.querySelector("#GABW").ondragstart = e => {
             e.dataTransfer.setData("text/plain", "gotofd");
