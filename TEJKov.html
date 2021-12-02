@@ -1,0 +1,30 @@
+<style>
+    body {
+        font-family: sans-serif;
+        font-size: 1.15em;
+        background-color: #111111;
+    }
+    p {
+        margin-right: auto;
+        margin-left: auto;
+        width: 75ch;
+        border: 2px solid #333333;
+        color: #DEDEDE;
+        padding: 1em;
+    }
+</style>
+<body>
+</body>
+<script src="./tejkov.js"></script>
+<script>
+    var url = new URL(document.location);
+    var searchParams = url.searchParams;
+    let count = searchParams.get("n") || 1;
+    let wordAmount = searchParams.get("w") || 25;
+    for (let i = 0; i < count; i++) {
+        let txt = generateManyWords(wordAmount);
+        let p = document.createElement("p");
+        p.textContent = txt;
+        document.body.appendChild(p);
+    }
+</script>
