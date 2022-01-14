@@ -498,6 +498,50 @@
                 window.location.href = "fdliomitrescu.html";
             }
         }
+
+        // gamepad support
+
+        var gamepadInUse = null;
+        var superButton = document.querySelector("#super-button");
+
+        window.addEventListener("gamepadconnected", e => {
+            console.log(e.gamepad);
+            gamepadInUse = e.gamepad;
+            let sbStyle = getComputedStyle(superButton);
+            let sbx = sbStyle.left;
+            let sby = sbStyle.top;
+            superButton.style.animation = "none";
+            superButton.style.left = sbx;
+            superButton.style.top = sby;
+        });
+
+        setInterval(() => {
+            if (gamepadInUse) {
+                let leftStickX = gamepadInUse.axes[0];
+                let leftStickY = gamepadInUse.axes[1];
+                let rightStickX = gamepadInUse.axes[3];
+                let rightStickY = gamepadInUse.axes[4];
+                leftStickX = Math.abs(leftStickX) > 0.2 ? (leftStickX - 0.1 * Math.sign(leftStickX)) / 0.9 : 0;
+                leftStickY = Math.abs(leftStickY) > 0.2 ? (leftStickY - 0.1 * Math.sign(leftStickY)) / 0.9 : 0;
+                rightStickX = Math.abs(rightStickX) > 0.2 ? (rightStickX - 0.1 * Math.sign(rightStickX)) / 0.9 : 0;
+                rightStickY = Math.abs(rightStickY) > 0.2 ? (rightStickY - 0.1 * Math.sign(rightStickY)) / 0.9 : 0;
+                let sbx = parseInt(superButton.style.left) || 0;
+                let sby = parseInt(superButton.style.top) || 0;
+                let dsx = parseInt(dsi.style.left) || 0;
+                let dsy = parseInt(dsi.style.top) || 0;
+                // console.log(superButton.style.top)
+                sbx += Math.floor(.5 + 16 * leftStickX);
+                sby += Math.floor(.5 + 16 * leftStickY);
+                dsx += Math.floor(.5 + 16 * rightStickX);
+                dsy += Math.floor(.5 + 16 * rightStickY);
+                // console.log(sby)
+                superButton.style.left = sbx + "px";
+                superButton.style.top = sby + "px";
+                dsi.style.left = dsx + "px";
+                dsi.style.top = dsy + "px";
+            }
+        }, 20);
+
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(() => { });
         }
