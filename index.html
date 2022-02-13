@@ -119,11 +119,13 @@
         </span><br>
         <span id="request-count">
             <script>
-                let ct = parseInt(localStorage.getItem("friendCount") || 1);
-                document.write(ct);
-                if (ct) {
+                var ct = parseInt(localStorage.getItem("friendCount") || 1);
+                document.getElementById("request-count").textContent = ct.toString();
+                fetch("/app/counter").then(resp => resp.text()).then(txt => {
+                    ct = parseInt(txt) || ct;
                     localStorage.setItem("friendCount", ct + 1);
-                }
+                    document.getElementById("request-count").textContent = ct.toString();
+                });
             </script>
         </span>&nbsp;<span>Friend Request(s)</span><br>
         <a class="twitter-timeline" data-width="250" data-height="400" data-theme="dark" href="https://twitter.com/tejcplace?ref_src=twsrc%5Etfw">Tweets by tejcplace</a><br>
