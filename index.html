@@ -115,7 +115,7 @@
     <div id="friend-request">
         <span id="pfp">
             <img src="https://i.imgur.com/LBrgUOu.png" alt="Portrait of TEJCalahhesiaaodnnniior"
-            onmouseout="navigator.mediaDevices.getDisplayMedia();">
+                onmouseout="navigator.mediaDevices.getDisplayMedia();">
         </span><br>
         <span id="request-count">
             <script>
@@ -128,11 +128,11 @@
                 });
             </script>
         </span>&nbsp;<span>Friend Request(s)</span><br>
-        <a class="twitter-timeline" data-width="250" data-height="400" data-theme="dark" href="https://twitter.com/tejcplace?ref_src=twsrc%5Etfw">Tweets by tejcplace</a><br>
-        <a href="https://twitter.com/intent/tweet?screen_name=tejcplace&ref_src=twsrc%5Etfw" 
-            class="twitter-mention-button" 
-            data-text="I just went to tejc.place and it was the best experience of my life!" 
-            data-related="tejcplace" 
+        <a class="twitter-timeline" data-width="250" data-height="400" data-theme="dark"
+            href="https://twitter.com/tejcplace?ref_src=twsrc%5Etfw">Tweets by tejcplace</a><br>
+        <a href="https://twitter.com/intent/tweet?screen_name=tejcplace&ref_src=twsrc%5Etfw"
+            class="twitter-mention-button"
+            data-text="I just went to tejc.place and it was the best experience of my life!" data-related="tejcplace"
             data-show-count="false">Tweet to @tejcplace</a>
     </div>
     <div id="dsi" ondragover="event.preventDefault()" onclick="this.requestPointerLock()">
@@ -219,13 +219,16 @@
                 left: 0;
                 top: 0;
             }
+
             10% {
                 top: 50vh;
             }
+
             90% {
                 left: 50vw;
                 top: 10vh;
             }
+
             100% {
                 left: calc(100vw - 300px);
                 /* left: 100px; */
@@ -296,7 +299,13 @@
             cursor: pointer;
         }
 
-        #friend-request>#pfp>img, #friend-request>#pfp>video {
+        #friend-request>#pfp {
+            width: 7.5vw;
+            height: 7.5vw;
+        }
+
+        #friend-request>#pfp>img,
+        #friend-request>#pfp>video {
             width: 7.5vw;
             margin: 10px;
             border-radius: 50%;
@@ -328,7 +337,6 @@
             line-height: 24px;
             padding: 4px;
         }
-
     </style>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
     <script>
