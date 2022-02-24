@@ -139,6 +139,13 @@
         <h1>⅔ the way to the end of time!</h1>
     </div>
     <audio src="assets/music.mp3" id="music" loop autoplay></audio>
+    <script>
+        if (document.location.hash && document.location.hash === "#fullmusic") {
+            let musicEle = document.querySelector("audio#music");
+            musicEle.src = "assets/full_music.mp3";
+            musicEle.playbackRate = 0.25;
+        }
+    </script>
     <audio src="assets/scream.mp3" id="scream" loop></audio>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Miss+Fajardose&display=swap');
