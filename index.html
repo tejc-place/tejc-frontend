@@ -140,10 +140,13 @@
     </div>
     <audio src="assets/music.mp3" id="music" loop autoplay></audio>
     <script>
+        let musicEle = document.querySelector("audio#music");
         if (document.location.hash && document.location.hash === "#fullmusic") {
-            let musicEle = document.querySelector("audio#music");
             musicEle.src = "assets/full_music.mp3";
             musicEle.playbackRate = 0.25;
+        }
+        if (Math.random() < 0.0001 || (document.location.hash && document.location.hash === "#altmusic")) {
+            musicEle.src = "assets/alt_music.mp3";
         }
     </script>
     <audio src="assets/scream.mp3" id="scream" loop></audio>
