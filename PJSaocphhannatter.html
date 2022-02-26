@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CTCYF3WKLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-CTCYF3WKLD');
+    </script>
+    <meta name="description" content="TEJC presents the greatest pizza recipe in history!">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="TEJC, TEJCalahhesiaaodnnniior, reckoning, scary, religion">
+    <meta property="og:title" content="PJSaocphhannatter">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://tejc.place/assets/icon96.png">
+    <meta property="og:url" content="https://tejc.place/PJSaocphhannatter">
+    <meta property="og:description" content="TEJC presents the greatest pizza recipe in history!">
+    <link rel="icon" type="image/png" href="assets/icon96.png">
+    <link rel="manifest" href="./manifest.json">
+    <title>PJS</title>
+</head>
+<audio id="voiceclip" src="assets/pj_clip3.mp3" autoplay loop></audio>
+<audio src="assets/triangle.mp3" autoplay loop></audio>
+<h1>🍕</h1>
+<style>
+    body {
+        width: 100vw;
+        height: 100vh;
+        background: url(assets/pj.jpg);
+        background-size: 7.5vw;
+        background-repeat: round;
+        cursor: help;
+    }
+
+    h1 {
+        font-size: 25vh;
+        filter: blur(.1vh);
+    }
+
+    h1:hover {
+        transform: rotate3d(3, -1, -1, -0.2turn);
+    }
+</style>
+<script>
+    let voiceOptions = ["assets/pj_clip3.mp3", "assets/pj_clip4.mp3"];
+    document.querySelector("audio#voiceclip").src = voiceOptions[Math.floor(Math.random() * voiceOptions.length)];
+    document.addEventListener("click", mouseevent => {
+        document.querySelectorAll("audio").forEach(e => {
+            e.play();
+        });
+    })
+    setTimeout(() => {
+        document.body.style.background = "url(assets/pj2.jpg)";
+        document.body.style.backgroundSize = "9vw";
+        document.body.style.backgroundRepeat = "round";
+    }, 90 * 1000 + Math.random() * 90 * 1000);
+</script>
