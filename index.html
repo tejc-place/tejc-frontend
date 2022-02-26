@@ -646,6 +646,11 @@
                 confetti(Object.assign({}, confettiDefaults, { particleCt, origin: { x: Math.random() * .3 + .6, y: Math.random() - 0.2 } }));
             }, 500);
         }
+        if ((d.getMonth() === 5) || (document.location.hash && document.location.hash === "#pride")) {
+            document.body.querySelectorAll("*").forEach(e => {
+                e.style.background = "linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet)";
+            });
+        }
     </script>
     <script src="exodia.js" data-exodia-url="https://i.imgur.com/kjj6qMI.png" data-is-exodia-main=1 data-piece-count=5
         data-cooldown=1000></script>
