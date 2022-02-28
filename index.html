@@ -192,6 +192,7 @@
             font-family: 'Miss Fajardose', cursive;
             font-size: 62.5vh;
             position: absolute;
+            z-index: 9999990;
         }
 
         #display {
@@ -543,7 +544,7 @@
         dsi.style.top = Math.floor(Math.random() * window.innerHeight - 100).toString() + "px";
         dsi.ondrop = e => {
             if (e.dataTransfer.getData("text/plain") === "gotofd") {
-                window.location.href = "fdliomitrescu.html";
+                window.location.href = "FDliomitrescu.html";
             }
         }
 

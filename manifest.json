@@ -23,31 +23,56 @@
             "name": "CSFGaarirmeblydbiey",
             "short_name": "CSFG",
             "url": "./CSFGaarirmeblydbiey.html?source=pwa",
-            "icons": [{ "src": "./icon96.png", "sizes": "96x96" }]
+            "icons": [
+                {
+                    "src": "./icon96.png",
+                    "sizes": "96x96"
+                }
+            ]
         },
         {
             "name": "GABWolaaryrldxnloeanyce",
             "short_name": "GABW",
             "url": "./GABWolaaryrldxnloeanyce.html?source=pwa",
-            "icons": [{ "src": "./icon96.png", "sizes": "96x96" }]
+            "icons": [
+                {
+                    "src": "./icon96.png",
+                    "sizes": "96x96"
+                }
+            ]
         },
         {
-            "name": "fdliomitrescu",
+            "name": "FDliomitrescu",
             "short_name": "fdlio",
-            "url": "./fdliomitrescu.html?source=pwa",
-            "icons": [{ "src": "./icon96.png", "sizes": "96x96" }]
+            "url": "./FDliomitrescu.html?source=pwa",
+            "icons": [
+                {
+                    "src": "./icon96.png",
+                    "sizes": "96x96"
+                }
+            ]
         },
         {
             "name": "MKJieacvkhieanel",
             "short_name": "MKJ",
             "url": "./MKJieacvkhieanel.html?source=pwa",
-            "icons": [{ "src": "./icon96.png", "sizes": "96x96" }]
+            "icons": [
+                {
+                    "src": "./icon96.png",
+                    "sizes": "96x96"
+                }
+            ]
         },
         {
             "name": "CGWChLhaeaevlDaelOtSley",
             "short_name": "CGWC",
             "url": "./CGWChLhaeaevlDaelOtSley.html?source=pwa",
-            "icons": [{ "src": "./icon96.png", "sizes": "96x96" }]
+            "icons": [
+                {
+                    "src": "./icon96.png",
+                    "sizes": "96x96"
+                }
+            ]
         }
     ],
     "description": "The official home of TEJCalahhesiaaodnnniior."
