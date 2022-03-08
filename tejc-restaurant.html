@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CTCYF3WKLD"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-CTCYF3WKLD');
+    </script>
+    <meta name="description" content="TEJCalahhesiaaodnnniior presents a Restaurant with Food!! lots of Stars!">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="TEJC, TEJCalahhesiaaodnnniior, Restaurant, Food">
+    <meta property="og:title" content="TEJC Restaurant">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://tejc.place/assets/icon96.png">
+    <meta property="og:url" content="https://tejc.place/tejc-restaurant">
+    <meta property="og:description" content="TEJCalahhesiaaodnnniior presents a Restaurant with Food!! lots of Stars!!">
+    <link rel="icon" type="image/png" href="assets/icon96.png">
+    <link rel="manifest" href="./manifest.json">
+    <title>TEJC Restaurant</title>
+    <style>
+        body {
+            background: url(assets/r/bg_sm.jpg);
+            background-size: cover;
+            width: 100vw;
+            height: 100vh;
+            max-width: 100%;
+            max-height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+
+        #menu {
+            width: 20vw;
+            height: 100%;
+            max-height: 100vh;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            overflow-y: scroll;
+        }
+
+        .menu-item {
+            width: 95%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            background-color: rgba(255, 255, 255, 0.75);
+            border-radius: 1em;
+            cursor: pointer;
+            margin-bottom: .5em;
+        }
+
+        .menu-item>img {
+            max-width: 100%;
+            filter: blur(5px) grayscale(0.6);
+        }
+
+        .menu-item.bought>img {
+            filter: none;
+        }
+
+        .menu-item>.menu-item-name {
+            letter-spacing: -.2em;
+            text-transform: uppercase;
+        }
+
+        .price {
+            padding-left: .25em;
+            padding-right: .25em;
+            font-family: monospace;
+        }
+
+        div#restaurant-main {
+            display: flex;
+            flex-direction: row;
+            height: 100%;
+        }
+
+        div#restaurant-table {
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+        }
+
+        div#wallet {
+            right: 0;
+            top: 0;
+            z-index: 999;
+            position: fixed;
+            background-color: rgba(255, 255, 255, 0.75);
+            border-radius: 0 0 0 1em;
+            padding: 2em;
+        }
+
+        div.purchased-item {
+            overflow: hidden;
+            max-width: 180px;
+            cursor: pointer;
+        }
+
+        img.purchased-item-image {
+            width: 180px;
+        }
+    </style>
+</head>
+
+<body>
+    <audio src="assets/r/cash_register.mp3" id="cash-register-sfx"></audio>
+    <audio src="assets/r/crunch.mp3" id="crunch-sfx"></audio>
+    <div id="restaurant-main">
+        <div id="menu">
+            <template id="menu-item-temp">
+                <div class="menu-item">
+                    <img class="menu-item-image">
+                    <h3 class="menu-item-name"></h3>
+                    <p>Price:<span class="price"></span>T€J¢ bux</p>
+                </div>
+            </template>
+        </div>
+        <div id="restaurant-table">
+            <template id="purchased-item-temp">
+                <div class="purchased-item">
+                    <img class="purchased-item-image">
+                </div>
+            </template>
+        </div>
+        <div id="wallet">
+            Wallet:<span class="price">?</span>T€J¢ bux
+        </div>
+    </div>
+    <script>
+        const menuItemTemplate = document.querySelector("template#menu-item-temp");
+        const purchasedItemTemplate = document.querySelector("template#purchased-item-temp");
+        const restaurantMenu = document.querySelector("div#menu");
+        const bites = 4;
+        var balance = Math.floor((1 + 2 * Math.random()) * parseInt(localStorage.getItem("friendCount") || 1) * 100) / 100;
+
+        function updateWallet() {
+            document.querySelector("#wallet>.price").textContent = balance.toString();
+        }
+
+        function eatItem(ele) {
+            let crunchSfx = document.querySelector("audio#crunch-sfx")
+            if (crunchSfx.paused) {
+                crunchSfx.play();
+                let remaining = parseInt(ele.dataset.remaining || bites);
+                remaining -= 1;
+                ele.style.maxWidth = `${180 * remaining / bites}px`;
+                ele.dataset.remaining = remaining;
+                if (remaining === 0) {
+                    ele.remove();
+                }
+            } else {
+                alert("Still chewing!");
+            }
+        }
+
+        function buyItem(name, price, imgUrl) {
+            if (balance >= price) {
+                document.querySelector("audio#cash-register-sfx").play();
+                balance -= price;
+                updateWallet();
+                let purchasedItem = purchasedItemTemplate.content.cloneNode(true);
+                let purchasedItemEle = purchasedItem.querySelector("div.purchased-item");
+                purchasedItemEle.addEventListener("click", me => {
+                    let purchasedItemEle = me.target.closest(".purchased-item");
+                    if (purchasedItemEle) {
+                        eatItem(purchasedItemEle);
+                    }
+                })
+                let itemImage = purchasedItem.querySelector("img.purchased-item-image");
+                itemImage.src = imgUrl;
+                document.querySelector("div#restaurant-table").appendChild(purchasedItem);
+            }
+
+        }
+
+        function handleMenuItemClick(me) {
+            let menuItemEle = me.target.closest(".menu-item");
+            if (menuItemEle) {
+                let price = parseInt(menuItemEle.dataset.price || -1);
+                let name = menuItemEle.dataset.name;
+                let imgUrl = menuItemEle.dataset.imgUrl;
+                if (name && imgUrl && price !== -1) {
+                    buyItem(name, price, imgUrl);
+                }
+            }
+        }
+
+        function addMenuItem(name, price, imgUrl) {
+            let menuItem = menuItemTemplate.content.cloneNode(true);
+            let menuItemEle = menuItem.querySelector("div.menu-item");
+            menuItemEle.dataset.name = name;
+            menuItemEle.dataset.price = price;
+            menuItemEle.dataset.imgUrl = imgUrl;
+            menuItemEle.addEventListener("click", handleMenuItemClick);
+            let img = menuItem.querySelector("img.menu-item-image");
+            img.src = imgUrl;
+            img.alt = name;
+            let itemName = menuItem.querySelector(".menu-item-name");
+            itemName.textContent = name;
+            let itemPrice = menuItem.querySelector("span.price");
+            itemPrice.textContent = price.toString();
+            restaurantMenu.appendChild(menuItem);
+        }
+
+        function generateRandomPrice() {
+            var friendCount = parseInt(localStorage.getItem("friendCount") || 1);
+            return Math.max(1, Math.floor(Math.random() * 0.3 * friendCount + Math.sqrt(friendCount)));
+        }
+
+        addMenuItem("pie", generateRandomPrice(), "assets/r/pie.jpg");
+        addMenuItem("salad", generateRandomPrice(), "assets/r/salad.png");
+        addMenuItem("bread", generateRandomPrice(), "assets/r/bread.jpg");
+        addMenuItem("potato", generateRandomPrice(), "assets/r/potato.jpg");
+        updateWallet();
+    </script>
+</body>
