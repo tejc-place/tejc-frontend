@@ -564,7 +564,9 @@
             if (Math.random() < .05) {
                 dsi.querySelector(".flier").style.display = "flex";
             } else {
-                dsi.querySelector(".flier").style.display = "none";
+                if (Math.random() < 0.5) {
+                    dsi.querySelector(".flier").style.display = "none";
+                }
             }
         }, 2000 + Math.random() * 2000);
         dsi.ondrop = e => {
