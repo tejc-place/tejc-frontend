@@ -140,6 +140,11 @@
     </div>
     <div id="dsi" ondragover="event.preventDefault()" onclick="this.requestPointerLock()">
         <h1>⅔ the way to the end of time!</h1>
+        <div class="flier">
+            <h4>Have you seen this man?</h4>
+            <img src="assets/tatonobdmeryew.png">
+            <h3>Now you have :)</h3>
+        </div>
     </div>
     <audio src="assets/music.mp3" id="music" loop autoplay></audio>
     <script>
@@ -295,6 +300,18 @@
             font-size: larger;
             text-align: center;
             padding: 10px;
+        }
+
+        #dsi>.flier {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+        }
+
+        #dsi>.flier>img {
+            width: 50%;
         }
 
         #CSFG {
@@ -542,7 +559,8 @@
         }
         let dsi = document.querySelector("#dsi");
         dsi.style.left = Math.floor(Math.random() * window.innerWidth - 100).toString() + "px";
-        dsi.style.top = Math.floor(Math.random() * window.innerHeight - 100).toString() + "px";
+        dsi.style.top = Math.floor(Math.random() * window.innerHeight * .8 - 250).toString() + "px";
+        if (Math.random() < .05) dsi.querySelector(".flier").style.display = "flex";
         dsi.ondrop = e => {
             if (e.dataTransfer.getData("text/plain") === "gotofd") {
                 window.location.href = "FDliomitrescu.html";
