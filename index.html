@@ -472,6 +472,7 @@
         setInterval(() => {
             if (dur <= 0) {
                 resetTimer();
+                window.location = "/app/fortune";
             }
             document.querySelector('#timer').innerHTML = toHHMMSS(dur);
             dur -= 1;
