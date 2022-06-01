@@ -17,10 +17,33 @@
     document.body.appendChild(canv);
     /** @type {CanvasRenderingContext2D} */
     var ctx = canv.getContext("2d");
+    let pride = false;
+    let d = new Date();
+    if (
+        d.getMonth() === 5 ||
+        (document.location.hash && document.location.hash === "#pride")
+    ) {
+        pride = true;
+    }
 
     function drawDots() {
         canv.width = window.innerWidth;
         canv.height = window.innerHeight;
+        let rainbowGr = ctx.createRadialGradient(
+            0,
+            0,
+            0,
+            0,
+            0,
+            Math.sqrt(canv.width * canv.width + canv.height * canv.height)
+        );
+        rainbowGr.addColorStop(0, "red");
+        rainbowGr.addColorStop(1 / 6, "orange");
+        rainbowGr.addColorStop(2 / 6, "yellow");
+        rainbowGr.addColorStop(3 / 6, "green");
+        rainbowGr.addColorStop(4 / 6, "blue");
+        rainbowGr.addColorStop(5 / 6, "indigo");
+        rainbowGr.addColorStop(6 / 6, "violet");
         ctx.clearRect(0, 0, canv.width, canv.height);
         click_hist.forEach((pt) => {
             ctx.beginPath();
@@ -29,7 +52,11 @@
             ctx.moveTo(x * canv.width, y * canv.height);
             ctx.arc(x * canv.width, y * canv.height, 16, 0, 2 * Math.PI);
             ctx.closePath();
-            ctx.fillStyle = "rgba(255,0,0,0.2)";
+            if (pride) {
+                ctx.fillStyle = rainbowGr;
+            } else {
+                ctx.fillStyle = "rgba(255,0,0,0.2)";
+            }
             ctx.fill();
         });
     }
