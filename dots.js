@@ -1,6 +1,6 @@
 (() => {
     var currentScript = document.currentScript;
-    const maxClicks = 250;
+    const maxClicks = 2500;
 
     var canv = document.createElement("canvas");
     canv.width = window.innerHeight;
