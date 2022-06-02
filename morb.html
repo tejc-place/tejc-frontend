@@ -39,11 +39,13 @@
             align-items: center;
             justify-content: center;
         }
-        h1 {
-            font-size: 30vh;
-        }
-        h2 {
-            font-size: 10vh;
+        @media (orientation: landscape) {
+            h1 {
+                font-size: 30vh;
+            }
+            h2 {
+                font-size: 10vh;
+            }
         }
     </style>
 </head>
@@ -78,4 +80,5 @@
             }
         }, 1000);
     </script>
+    <script src="dots.js"></script>
 </body>
