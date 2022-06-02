@@ -1,4 +1,15 @@
 <head>
+    <title>IT'S MORBIN TIME</title>
+    <meta name="description" content="TEJC SAYS IT'S MORBIN TIME LETS FUCKING GOOOOO!!!!">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="TEJC, TEJCalahhesiaaodnnniior, MORB, VAMPIRE, BEST MOVIE EVER">
+    <meta property="og:title" content="TEJC MORB">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://tejc.place/assets/icon96.png">
+    <meta property="og:url" content="https://tejc.place/morb">
+    <meta property="og:description" content="TEJC SAYS ITS MORBIN TIME LETS FUCKING GOOOOO!!!!">
+    <link rel="icon" type="image/png" href="assets/icon96.png">
+    <link rel="manifest" href="./manifest.json">
     <style>
         body {
             width: 100vw;
@@ -20,9 +31,12 @@
             flex-direction: column;
         }
         .subtitle {
+            display: flex;
             position: absolute;
             width: 100%;
             height: auto;
+            align-items: center;
+            justify-content: center;
         }
         h1 {
             font-size: 30vh;
@@ -34,9 +48,33 @@
 </head>
 <body>
     <div class="subtitle">
-        <h2>DAYS WITHOUT WATCHING MORBIUS:</h2>
+        <h2>TIME WITHOUT SEEING MORBIUS:</h2>
     </div>
     <div class="center">
-        <h1>0 DAYS!</h1>
+        <h1 id="timer">0 SECONDS!!</h1>
     </div>
+    <script>
+        let counter = 0;
+        let counterEl = document.querySelector("#timer");
+        let subtitleEl = document.querySelector(".subtitle>h2");
+        setInterval(() => {
+            if (counter === 0) {
+                document.body.style.backgroundImage = "url(assets/morb.jpg)";
+                counterEl.innerHTML = "0 SECONDS!!";
+                if (Math.random() < 0.2) {
+                    counter++;
+                }
+            } else {
+                document.body.style.backgroundImage = "url(assets/sadmorb.jpg)";
+                // subtitleEl.textContent = "TIME WITHOUT SEEING MORBIUS:";
+                let s = counter > 1 ? "s" : "";
+                counterEl.innerHTML = `${counter} second${s} :(`;
+                if (Math.random() < counter * (1/15)) {
+                    counter++;
+                } else {
+                    counter = 0;
+                }
+            }
+        }, 1000);
+    </script>
 </body>
