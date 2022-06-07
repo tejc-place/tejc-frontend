@@ -25,18 +25,25 @@
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            justify-content: space-between;
             position: fixed;
         }
-        h1, h2 {
+        h1, h2, h3 {
             text-transform: uppercase;
             text-align: center;
         }
-        h2 {
+        h2, h3 {
             color: #555;
         }
         #answer {
-            text-decoration: underline;
+            text-decoration: underline wavy;
+        }
+        a:link {
+            color: inherit;
+        }
+        a:visited {
+            color: inherit;
         }
         @media (orientation: landscape) {
             h1 {
@@ -45,12 +52,16 @@
             h2 {
                 font-size: 8vh;
             }
+            h3 {
+                font-size: 2vh;
+            }
         }
     </style>
 </head>
 <body>
     <div class="question-center">
         <h2 id="question">DO YOU HAVE AN STD?</h2>
+        <h3><a href="https://youtu.be/uKeKuaJ4nlw" rel="noopener noreferrer">SOURCE: I MADE IT THE FUCK UP</a></h3>
     </div>
     <div class="center">
         <h1 id="answer">
