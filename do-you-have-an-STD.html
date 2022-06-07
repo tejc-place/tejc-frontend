@@ -1,0 +1,79 @@
+<head>
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background: #111111;
+            color: #FEFEFE;
+        }
+        div.center {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .question-center {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            position: fixed;
+        }
+        h1, h2 {
+            text-transform: uppercase;
+            text-align: center;
+        }
+        h2 {
+            color: #555;
+        }
+        #answer {
+            text-decoration: underline;
+        }
+        @media (orientation: landscape) {
+            h1 {
+                font-size: 20vh;
+            }
+            h2 {
+                font-size: 8vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="question-center">
+        <h2 id="question">DO YOU HAVE AN STD?</h2>
+    </div>
+    <div class="center">
+        <h1 id="answer">
+        </h1>
+    </div>
+    <script>
+        var url = new URL(document.location);
+        var searchParams = url.searchParams;
+        if (searchParams.has("find-out-now!")) {
+            let answers = [
+                "As I see it, yes.",
+                "Outlook good.",
+                "Signs point to yes.",
+                "Reply hazy, try again.",
+                "Cannot predict now.",
+                "Concentrate and ask again.",
+                "My reply is no.",
+                "Outlook not so good.",
+            ];
+            let answer = answers[Math.floor(Math.random() * answers.length)];
+            document.querySelector("h1#answer").textContent = answer;
+        } else {
+            document.location = document.location.pathname + "?find-out-now!";
+        }
+    </script>    
+</body>
