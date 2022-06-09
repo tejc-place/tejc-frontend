@@ -166,7 +166,10 @@
             });
         }
         let outputEl = document.querySelector("#output");
-        outputEl.innerHTML = combined;
+        let nameLengths = names.map((v, idx, arr) => {
+            return v.length;
+        });
+        outputEl.textContent = names.length + " " + nameLengths.join(" ") + " " + combined;
         sayMyName(outputEl);
         searchParams.delete("name")
         if (searchParams.has("b64")) {
