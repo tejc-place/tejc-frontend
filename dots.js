@@ -50,7 +50,7 @@
             let x = pt[0];
             let y = pt[1];
             ctx.moveTo(x * canv.width, y * canv.height);
-            ctx.arc(x * canv.width, y * canv.height, 16, 0, 2 * Math.PI);
+            ctx.arc(x * canv.width, y * canv.height, 6, 0, 2 * Math.PI);
             ctx.closePath();
             if (pride) {
                 ctx.fillStyle = rainbowGr;
