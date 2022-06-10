@@ -26,14 +26,16 @@ addEventListener("connect", (/** @type {MessageEvent} */ e) => {
     }
 
     port.addEventListener("message", (e) => {
-        if (e.data[0] === "localstatus" && loggedIn) {
-            port.postMessage(makeMessage(["localstatus", "login"]));
+        // console.log(e);
+        if (e.data[0] === "localstatus") {
+            if (loggedIn) {
+                port.postMessage(makeMessage(["localstatus", "login"]));
+            }
             return;
         }
         let msg = makeMessage(e.data);
         if (msg) {
             let data = JSON.stringify(msg);
-            console.log(msg);
             ws.send(data);
         }
     });
