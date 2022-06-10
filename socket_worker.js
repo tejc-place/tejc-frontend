@@ -33,6 +33,7 @@ addEventListener("connect", (/** @type {MessageEvent} */ e) => {
         let msg = makeMessage(e.data);
         if (msg) {
             let data = JSON.stringify(msg);
+            console.log(msg);
             ws.send(data);
         }
     });
