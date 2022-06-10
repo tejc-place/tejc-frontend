@@ -1,7 +1,9 @@
+var ws = new WebSocket(`wss://tejc.place:8352/`);
+var loggedIn = false;
+var ports = [];
 addEventListener("connect", (/** @type {MessageEvent} */ e) => {
     let port = e.ports[0];
-    let ws = new WebSocket(`wss://tejc.place:8352/`);
-    var loggedIn = false;
+    // ports.push(port);
     ws.addEventListener("message", (e) => {
         let data = JSON.parse(e.data);
         if (data.n === "status") {
