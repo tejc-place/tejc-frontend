@@ -7,9 +7,9 @@ addEventListener("connect", (/** @type {MessageEvent} */ e) => {
     ws.addEventListener("message", (e) => {
         let data = JSON.parse(e.data);
         if (data.n === "status") {
-            if (data.p[0] === "login") {
+            if (data.p[1] === "login") {
                 loggedIn = true;
-            } else if (data.p[0] === "logout") {
+            } else if (data.p[1] === "logout") {
                 loggedIn = false;
             }
         }
