@@ -4,17 +4,6 @@ var ports = [];
 addEventListener("connect", (/** @type {MessageEvent} */ e) => {
     let port = e.ports[0];
     // ports.push(port);
-    ws.addEventListener("message", (e) => {
-        let data = JSON.parse(e.data);
-        if (data.n === "status") {
-            if (data.p[1] === "login") {
-                loggedIn = true;
-            } else if (data.p[1] === "logout") {
-                loggedIn = false;
-            }
-        }
-        port.postMessage(data);
-    });
 
     function makeMessage(args) {
         if (args.length > 0) {
@@ -26,6 +15,22 @@ addEventListener("connect", (/** @type {MessageEvent} */ e) => {
             return msg;
         }
     }
+
+    ws.addEventListener("message", (e) => {
+        if (e.data === "heartbeat") {
+            port.postMessage(makeMessage(["heartbeat"]));
+            return;
+        }
+        let data = JSON.parse(e.data);
+        if (data.n === "status") {
+            if (data.p[1] === "login") {
+                loggedIn = true;
+            } else if (data.p[1] === "logout") {
+                loggedIn = false;
+            }
+        }
+        port.postMessage(data);
+    });
 
     port.addEventListener("message", (e) => {
         // console.log(e);
