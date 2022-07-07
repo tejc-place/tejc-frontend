@@ -1,0 +1,97 @@
+<style>
+    /* Raleway font licensed under OFL
+       see https://tejc.place/assets/fonts/raleway/OFL.txt for full license
+    */
+    @import url(assets/fonts/raleway/Raleway-VariableFont_wght.ttf);
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        padding: 0;
+        margin: 0;
+        background: #212121;
+        color: #fff;
+        font-family: 'Raleway', sans-serif;
+    }
+
+    .start-text {
+        cursor: pointer;
+        font-size: 4rem;
+        font-weight: 500;
+        text-decoration: underline;
+    }
+
+    .small-note {
+        font-size: .8rem;
+        color: #ccc;
+    }
+
+    .main-content {
+        animation: fade-in 1.2s ease-out;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .spin {
+        animation: 500ms linear 0s infinite forwards running spin;
+        text-decoration: none !important;
+    }
+
+    @keyframes fade-in {
+        0% {
+            opacity: 0%;
+        }
+
+        100% {
+            opacity: 100%;
+        }
+    }
+
+    @keyframes spin {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        50% {
+            transform: rotate(180deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+
+    audio {
+        display: none;
+    }
+
+    #font-attr {
+        right: 0;
+        bottom: 0;
+        position: fixed;
+        color: #444;
+    }
+</style>
+<body>
+    <audio src="assets/beep.mp3" autoplay controls></audio>
+    <div class="main-content">
+        <div class="start-text">Please click here to begin.</div>
+        <div class="small-note">this page is best experienced with sound on 🔊</div>
+    </div>
+    <!-- <div id="font-attr"><a href="/assets/fonts/raleway/OFL.txt">font: raleway</a></div> -->
+    <script>
+        let beepAudio = document.querySelector("audio");
+        let startTextEle = document.querySelector(".start-text")
+        let noteEle = document.querySelector(".small-note");
+        startTextEle.addEventListener("click", e => {
+            startTextEle.textContent = ":)";
+            startTextEle.classList.add("spin");
+            noteEle.style.display = "none";
+            beepAudio.play();
+        })
+    </script>
+</body>
