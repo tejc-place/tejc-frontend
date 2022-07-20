@@ -17,5 +17,12 @@
     </style>
 </head>
 <body>
-    <iframe src="main-index.html"></iframe>
+    <iframe src="fancy.html"></iframe>
+    <script>
+        if (localStorage.getItem("friendCount")) {
+            document.querySelector("iframe").src = "main-index.html";
+        } else {
+            localStorage.setItem("friendCount", 1);
+        }
+    </script>
 </body>
