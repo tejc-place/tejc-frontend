@@ -15,14 +15,20 @@
             height: 100%;
         }
     </style>
+    <link rel="icon" type="image/png" href="assets/icon96.png">
 </head>
 <body>
     <iframe src="fancy.html"></iframe>
     <script>
         let frame = document.querySelector("iframe");
-        setInterval(() => {
-            document.title = frame.contentDocument.title;
-        }, 500);
+        window.addEventListener("message", e => {
+            if (e.data.icon) {
+                document.querySelector('link[rel="icon"]').href = e.data.icon;
+            }
+            if (e.data.title) {
+                document.title = e.data.title;
+            }
+        });
         if (localStorage.getItem("friendCount")) {
             frame.src = "main-index.html";
         } else {

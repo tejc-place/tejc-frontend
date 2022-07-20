@@ -480,8 +480,11 @@
             document.querySelector('#timer').innerHTML = toHHMMSS(dur);
             dur -= 1;
             if (notifCount > 0) {
-                document.title = `(${notifCount}) Twitter`;
-                document.querySelector('link[rel="icon"]').href = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwB3nayOAAABwUlEQVR4nO1W0W3CQAxlBP5IRBLdCB2hI3QERsgGuRH4Q8khpRu0G5QNYAPYwOGHQn+o7ZIKkrvkLg1RP7D0JCSSe77nZzuj0SMucfCT+OTJLeJ8msj1pydng5ETGRNXcJgk8SAJfPlyrUuAFBkkAQM5w/aMYAHPgSo+QlUA4hxmxTbM9rm3AFF9bpzD+Oblo5fstAmgF2zII7VPmNSAIAU5TSHmBDGp2gHHHwPWErAx4jSDWRP5NSJURaAi+M5T7SA2oi83REyKHC0NGC5RahtyLE2QFW/8/BJetIeVtaEsA5QVJVtTzUzk9J/t7X+BihlvE2Qw19YQa+en9axd5Cf4ppuXIXIQUeliPVhGNhS7vtl8VYhKR2hLECmInWW1RK39aiVQsONWsTSWI6CRvMkDfQDPXrUmILA/75jAvDUBint5QDt8TEG9GvXoAyv5b1SgNkPJWlrSHk3DRxfYDe4TzkiuWT5WKiiQfyUvl0+nBChIOsSmc+2VeY84BbWnsx9c624ivsx7a3Jeu11uTjuatht9vZBxOo1jbLc+ar7qQtxbvSl4LeMswIPfyYTX9effZMwUXukZ0bbhHvGI/x7fIzZ3isv5tnQAAAAASUVORK5CYII=";
+                let lookawayTitle = `(${notifCount}) Twitter`;
+                document.title = lookawayTitle;
+                let lookawayIcon = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwB3nayOAAABwUlEQVR4nO1W0W3CQAxlBP5IRBLdCB2hI3QERsgGuRH4Q8khpRu0G5QNYAPYwOGHQn+o7ZIKkrvkLg1RP7D0JCSSe77nZzuj0SMucfCT+OTJLeJ8msj1pydng5ETGRNXcJgk8SAJfPlyrUuAFBkkAQM5w/aMYAHPgSo+QlUA4hxmxTbM9rm3AFF9bpzD+Oblo5fstAmgF2zII7VPmNSAIAU5TSHmBDGp2gHHHwPWErAx4jSDWRP5NSJURaAi+M5T7SA2oi83REyKHC0NGC5RahtyLE2QFW/8/BJetIeVtaEsA5QVJVtTzUzk9J/t7X+BihlvE2Qw19YQa+en9axd5Cf4ppuXIXIQUeliPVhGNhS7vtl8VYhKR2hLECmInWW1RK39aiVQsONWsTSWI6CRvMkDfQDPXrUmILA/75jAvDUBint5QDt8TEG9GvXoAyv5b1SgNkPJWlrSHk3DRxfYDe4TzkiuWT5WKiiQfyUvl0+nBChIOsSmc+2VeY84BbWnsx9c624ivsx7a3Jeu11uTjuatht9vZBxOo1jbLc+ar7qQtxbvSl4LeMswIPfyYTX9effZMwUXukZ0bbhHvGI/x7fIzZ3isv5tnQAAAAASUVORK5CYII=";
+                document.querySelector('link[rel="icon"]').href = lookawayIcon;
+                window.top.postMessage({"icon": lookawayIcon, "title": lookawayTitle});
             }
             if (Math.random() < .2 && !document.hasFocus()) {
                 notifCount++;
@@ -499,6 +502,7 @@
                 notifCount = 0;
                 document.querySelector('link[rel="icon"]').href = "https://tejc.place/assets/icon96.png";
                 document.title = originalTitle;
+                window.top.postMessage({"icon": "/assets/icon96.png", "title": originalTitle});
                 taco.style.visibility = 'hidden';
                 if (!taco.paused)
                     taco.pause();
