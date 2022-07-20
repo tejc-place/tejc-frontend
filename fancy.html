@@ -1,0 +1,167 @@
+<head>
+    <title>TEJC.place</title>
+    <style>
+        /* Roboto font licensed under Apache 2.0 License, see https://tejc.place/assets/fonts/roboto/LICENSE.txt */
+        @font-face {
+            font-family: "Roboto";
+            src: url("/assets/fonts/roboto/Roboto-Regular.ttf") format("truetype"),
+                 url("/assets/fonts/roboto/Roboto-Bold.ttf") format("truetype"),
+                 url("/assets/fonts/roboto/Roboto-Medium.ttf") format("truetype");
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(45deg, #897777, #d0cccc, #706666);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100vw;
+            min-height: 100vh;
+            font-family: "Roboto", sans-serif;
+            color: #212121;
+        }
+
+        .main {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        #main-titles {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-weight: 700;
+            font-size: 4vmin;
+            color: #555555;
+        }
+
+        .title {
+            font-weight: bolder;
+            font-size: 18vmin;
+            letter-spacing: -.05em;
+            vertical-align: text-top;
+        }
+
+        #title-main {
+            background: url(assets/fancy/acrylic-bg.webp);
+            background-size: cover;
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 0;
+        }
+
+        .main > .cta {
+            position: absolute;
+            bottom: 0;
+        }
+
+        .cta {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .cta > a > button {
+            border: 3px solid black;
+            background: #ac3333;
+            color: #fff;
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        .bio {
+            width: 100%;
+            margin: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .bio-left {
+            flex-direction: row;
+        }
+
+        .bio-right {
+            flex-direction: row-reverse;
+        }
+
+        .bio > .portrait {
+            width: 25%;
+            border-radius: 50%;
+            margin: 16px;
+        }
+
+        .bio-right > .blurb {
+            text-align: right;
+        }
+
+        .bio-left > .blurb {
+            text-align: left;
+        }
+
+        .bio > .blurb {
+            width: 25%;
+        }
+        /* hr {
+            width: 100%;
+        } */
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="subtitle">Welcome to</div>
+        <div class="title">
+            <span id="title-main">TEJC</span>.place
+        </div>
+        <div class="subtitle">the best website ever</div>
+        <div class="cta">
+            <a href="/"><button>Click here to enter</button></a>
+            <div>or scroll down to learn more</div>
+        </div>
+    </div>
+    <div class="bio bio-left">
+        <video src="assets/face-anim.mp4" class="portrait" autoplay muted loop></video>
+        <div class="blurb">
+            <h1>TEJC</h1>
+            Our <b>brilliant founder</b> and <b>brave leader</b>, TEJC. They are always thinking of great new <b>innovations</b> and guiding us on our path.
+        </div>
+    </div>
+    <div class="bio bio-right">
+        <img src="assets/csfg/csfg-face.png" class="portrait">
+        <div class="blurb">
+            <h1>CSFG</h1>
+            CSFG is responsible for <b>intelligently</b> and <b>quickly</b> weaving together words and names to create what could only be called <b>incredible works of art</b>.
+        </div>
+    </div>
+    <div class="bio bio-left">
+        <img src="assets/gabw/gabw-face.png" class="portrait">
+        <div class="blurb">
+            <h1>GABW</h1>
+            GABW doesn't really do anything. ????
+        </div>
+    </div>
+    <div class="bio bio-right">
+        <img src="assets/tatonobdmeryew.png" class="portrait">
+        <div class="blurb">
+            <h1>TATO</h1>
+            Have you seen this man?<br>
+            Now you have
+        </div>
+    </div>
+    <div class="cta">
+        <a href="/"><button>Click here to enter</button></a>
+        <p>and enjoy your time at TEJC.place.</p>
+    </div>
+</body>
