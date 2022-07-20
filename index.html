@@ -19,8 +19,12 @@
 <body>
     <iframe src="fancy.html"></iframe>
     <script>
+        let frame = document.querySelector("iframe");
+        setInterval(() => {
+            document.title = frame.contentDocument.title;
+        }, 500);
         if (localStorage.getItem("friendCount")) {
-            document.querySelector("iframe").src = "main-index.html";
+            frame.src = "main-index.html";
         } else {
             localStorage.setItem("friendCount", 1);
         }
