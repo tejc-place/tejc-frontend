@@ -715,6 +715,8 @@
                 e.style.background = "linear-gradient(45deg, red, orange, yellow, green, blue, indigo, violet)";
             });
         }
+
+        window.top.postMessage({"title": document.title});
     </script>
     <script src="exodia.js" data-exodia-url="/assets/exodia/1.jpg" data-is-exodia-main=1 data-piece-count=9
         data-cooldown=1000></script>
