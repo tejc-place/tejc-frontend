@@ -1,4 +1,4 @@
-var ws = new WebSocket(`wss://tejc.place:8352/`);
+var ws = new WebSocket(`wss://ws.tejc.place/`);
 var loggedIn = false;
 var ports = [];
 addEventListener("connect", (/** @type {MessageEvent} */ e) => {
